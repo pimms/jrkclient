@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 class RootViewControllerProvider {
     private let dataStack: CoreDataStackProtocol
@@ -9,7 +9,13 @@ class RootViewControllerProvider {
 
     // MARK: - Internal methods
 
-    func createRootViewController() {
+    func createRootViewController() -> UIViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: .main)
 
+        if let preferredConfiguration = dataStack.preferredServerConfiguration() {
+            fatalError("TODO: Initiate a VC with a defined configuration: \(preferredConfiguration)")
+        }
+
+        return storyboard.instantiateViewController(identifier: "InitialConfigViewController")
     }
 }
