@@ -14,6 +14,7 @@
 		194136682323A0500087BCC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 194136672323A0500087BCC6 /* Assets.xcassets */; };
 		1941366B2323A0500087BCC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 194136692323A0500087BCC6 /* LaunchScreen.storyboard */; };
 		194136812323A0510087BCC6 /* newjrkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194136802323A0510087BCC6 /* newjrkUITests.swift */; };
+		1960BEB12323D2B300BE4151 /* NSManagedObject+URIRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960BEB02323D2B300BE4151 /* NSManagedObject+URIRepresentation.swift */; };
 		19F87DE72323AED3008473C3 /* TestDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F87DE62323AED3008473C3 /* TestDataStack.swift */; };
 		19F87DEB2323AFCF008473C3 /* TestDataStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F87DEA2323AFCF008473C3 /* TestDataStackTests.swift */; };
 		19F87DEE2323B172008473C3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F87DED2323B172008473C3 /* CoreDataStack.swift */; };
@@ -52,6 +53,7 @@
 		1941367C2323A0510087BCC6 /* newjrkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = newjrkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		194136802323A0510087BCC6 /* newjrkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newjrkUITests.swift; sourceTree = "<group>"; };
 		194136822323A0510087BCC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1960BEB02323D2B300BE4151 /* NSManagedObject+URIRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+URIRepresentation.swift"; sourceTree = "<group>"; };
 		19F87DE62323AED3008473C3 /* TestDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataStack.swift; sourceTree = "<group>"; };
 		19F87DEA2323AFCF008473C3 /* TestDataStackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataStackTests.swift; sourceTree = "<group>"; };
 		19F87DED2323B172008473C3 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				19F87DF32323C0AA008473C3 /* newjrk.entitlements */,
+				1960BEAF2323D2A100BE4151 /* Extensions */,
 				19F87DEC2323B166008473C3 /* CoreData */,
 				19F87DE32323A3F7008473C3 /* ViewControllers */,
 				1941365B2323A04E0087BCC6 /* AppDelegate.swift */,
@@ -141,6 +144,14 @@
 				194136822323A0510087BCC6 /* Info.plist */,
 			);
 			path = newjrkUITests;
+			sourceTree = "<group>";
+		};
+		1960BEAF2323D2A100BE4151 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1960BEB02323D2B300BE4151 /* NSManagedObject+URIRepresentation.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		19F87DE32323A3F7008473C3 /* ViewControllers */ = {
@@ -319,6 +330,7 @@
 				1941365E2323A04E0087BCC6 /* SceneDelegate.swift in Sources */,
 				19F87DEE2323B172008473C3 /* CoreDataStack.swift in Sources */,
 				19F87DF22323B485008473C3 /* CoreDataStackProtocol.swift in Sources */,
+				1960BEB12323D2B300BE4151 /* NSManagedObject+URIRepresentation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

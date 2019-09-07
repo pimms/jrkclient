@@ -70,4 +70,19 @@ class TestDataStackTests: XCTestCase {
 
         waitForExpectations(timeout: 1.0)
     }
+
+    func testFetchById() {
+        let stack = TestDataStack()
+        let entity = stack.createEntity(ServerConfiguration.self)
+        entity.name = "12345"
+        entity.url = URL(string: "https://www.google.com")
+
+        guard let copy = stack.fetch(ServerConfiguration.self, byURIRepresentation: entity.uriRepresentation) else {
+            XCTFail("Failed to fetch copy by ID")
+            return
+        }
+
+        XCTAssertEqual(copy.name, entity.name)
+        XCTAssertEqual(copy.url, entity.url)
+    }
 }

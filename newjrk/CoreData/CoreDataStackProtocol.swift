@@ -14,7 +14,7 @@ extension CoreDataStackProtocol {
 
     // MARK: - Fetching
 
-    func fetch<T: NSManagedObject>(_ what: T.Type, completion: @escaping ([T]?, Error?) -> Void) {
+    func fetch<T: NSManagedObject>(_: T.Type, completion: @escaping ([T]?, Error?) -> Void) {
         let request = T.fetchRequest()
 
         do {
@@ -29,6 +29,16 @@ extension CoreDataStackProtocol {
             completion(nil, error)
             return
         }
+    }
+
+    func fetch<T: NSManagedObject>(_: T.Type, byURIRepresentation uri: URL) -> T? {
+        guard
+            let objectId = managedObjectContext.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: uri),
+            let object = managedObjectContext.object(with: objectId) as? T else {
+            return nil
+        }
+
+        return object
     }
 
     // MARK: - Entity Creation
