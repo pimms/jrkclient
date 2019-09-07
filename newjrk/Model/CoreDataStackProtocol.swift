@@ -8,7 +8,7 @@ protocol CoreDataStackProtocol {
     var managedObjectContext: NSManagedObjectContext { get }
 }
 
-// MARK: - Internal methods
+// MARK: - Persistence actions
 
 extension CoreDataStackProtocol {
 
@@ -68,5 +68,30 @@ extension CoreDataStackProtocol {
             print("Failed to persist NSManagedObjectContext: \(error)")
             return false
         }
+    }
+}
+
+// MARK: - Preferred Server Configuration
+
+extension CoreDataStackProtocol {
+
+    private var preferredServerConfigurationKey: String { "preferredServerConfigurationId" }
+
+    func setPreferredServerConfiguration(_ serverConfiguration: ServerConfiguration) {
+        UserDefaults.standard.setValue(serverConfiguration.uriRepresentation.absoluteString,
+                                       forKey: preferredServerConfigurationKey)
+    }
+
+    func preferredServerConfiguration() -> ServerConfiguration? {
+        guard
+            let uriString = UserDefaults.standard.value(forKey: preferredServerConfigurationKey) as? String,
+            let uri = URL(string: uriString),
+            let config = fetch(ServerConfiguration.self, byURIRepresentation: uri)
+        else {
+            UserDefaults.standard.removeObject(forKey: preferredServerConfigurationKey)
+            return nil
+        }
+
+        return config
     }
 }

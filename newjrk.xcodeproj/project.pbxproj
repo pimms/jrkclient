@@ -15,8 +15,10 @@
 		1941366B2323A0500087BCC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 194136692323A0500087BCC6 /* LaunchScreen.storyboard */; };
 		194136812323A0510087BCC6 /* newjrkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194136802323A0510087BCC6 /* newjrkUITests.swift */; };
 		1960BEB12323D2B300BE4151 /* NSManagedObject+URIRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960BEB02323D2B300BE4151 /* NSManagedObject+URIRepresentation.swift */; };
+		1960BEB62323D86A00BE4151 /* RootViewControllerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960BEB52323D86A00BE4151 /* RootViewControllerProvider.swift */; };
+		1960BEB82323DBBF00BE4151 /* UserDefaults+clearAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960BEB72323DBBF00BE4151 /* UserDefaults+clearAll.swift */; };
 		19F87DE72323AED3008473C3 /* TestDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F87DE62323AED3008473C3 /* TestDataStack.swift */; };
-		19F87DEB2323AFCF008473C3 /* TestDataStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F87DEA2323AFCF008473C3 /* TestDataStackTests.swift */; };
+		19F87DEB2323AFCF008473C3 /* CoreDataStackProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F87DEA2323AFCF008473C3 /* CoreDataStackProtocolTests.swift */; };
 		19F87DEE2323B172008473C3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F87DED2323B172008473C3 /* CoreDataStack.swift */; };
 		19F87DF22323B485008473C3 /* CoreDataStackProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F87DF12323B485008473C3 /* CoreDataStackProtocol.swift */; };
 		19F87DF62323C0B3008473C3 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F87DF52323C0B3008473C3 /* CloudKit.framework */; };
@@ -54,8 +56,10 @@
 		194136802323A0510087BCC6 /* newjrkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newjrkUITests.swift; sourceTree = "<group>"; };
 		194136822323A0510087BCC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1960BEB02323D2B300BE4151 /* NSManagedObject+URIRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+URIRepresentation.swift"; sourceTree = "<group>"; };
+		1960BEB52323D86A00BE4151 /* RootViewControllerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewControllerProvider.swift; sourceTree = "<group>"; };
+		1960BEB72323DBBF00BE4151 /* UserDefaults+clearAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+clearAll.swift"; sourceTree = "<group>"; };
 		19F87DE62323AED3008473C3 /* TestDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataStack.swift; sourceTree = "<group>"; };
-		19F87DEA2323AFCF008473C3 /* TestDataStackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataStackTests.swift; sourceTree = "<group>"; };
+		19F87DEA2323AFCF008473C3 /* CoreDataStackProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStackProtocolTests.swift; sourceTree = "<group>"; };
 		19F87DED2323B172008473C3 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		19F87DF12323B485008473C3 /* CoreDataStackProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStackProtocol.swift; sourceTree = "<group>"; };
 		19F87DF32323C0AA008473C3 /* newjrk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = newjrk.entitlements; sourceTree = "<group>"; };
@@ -112,17 +116,15 @@
 		1941365A2323A04E0087BCC6 /* newjrk */ = {
 			isa = PBXGroup;
 			children = (
-				19F87DF32323C0AA008473C3 /* newjrk.entitlements */,
+				1960BEB32323D7D400BE4151 /* Core */,
+				19F87DEC2323B166008473C3 /* Model */,
 				1960BEAF2323D2A100BE4151 /* Extensions */,
-				19F87DEC2323B166008473C3 /* CoreData */,
 				19F87DE32323A3F7008473C3 /* ViewControllers */,
-				1941365B2323A04E0087BCC6 /* AppDelegate.swift */,
-				1941365D2323A04E0087BCC6 /* SceneDelegate.swift */,
-				194136612323A04E0087BCC6 /* Main.storyboard */,
+				1960BEB42323D7E200BE4151 /* Storyboards */,
 				194136672323A0500087BCC6 /* Assets.xcassets */,
-				194136692323A0500087BCC6 /* LaunchScreen.storyboard */,
 				1941366C2323A0500087BCC6 /* Info.plist */,
 				194136642323A04E0087BCC6 /* newjrk.xcdatamodeld */,
+				19F87DF32323C0AA008473C3 /* newjrk.entitlements */,
 			);
 			path = newjrk;
 			sourceTree = "<group>";
@@ -154,6 +156,25 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		1960BEB32323D7D400BE4151 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				1941365D2323A04E0087BCC6 /* SceneDelegate.swift */,
+				1941365B2323A04E0087BCC6 /* AppDelegate.swift */,
+				1960BEB52323D86A00BE4151 /* RootViewControllerProvider.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		1960BEB42323D7E200BE4151 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				194136612323A04E0087BCC6 /* Main.storyboard */,
+				194136692323A0500087BCC6 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		19F87DE32323A3F7008473C3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				19F87DE62323AED3008473C3 /* TestDataStack.swift */,
+				1960BEB72323DBBF00BE4151 /* UserDefaults+clearAll.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -172,18 +194,18 @@
 		19F87DE92323AFC1008473C3 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				19F87DEA2323AFCF008473C3 /* TestDataStackTests.swift */,
+				19F87DEA2323AFCF008473C3 /* CoreDataStackProtocolTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		19F87DEC2323B166008473C3 /* CoreData */ = {
+		19F87DEC2323B166008473C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				19F87DED2323B172008473C3 /* CoreDataStack.swift */,
 				19F87DF12323B485008473C3 /* CoreDataStackProtocol.swift */,
 			);
-			path = CoreData;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		19F87DF42323C0B3008473C3 /* Frameworks */ = {
@@ -330,6 +352,7 @@
 				1941365E2323A04E0087BCC6 /* SceneDelegate.swift in Sources */,
 				19F87DEE2323B172008473C3 /* CoreDataStack.swift in Sources */,
 				19F87DF22323B485008473C3 /* CoreDataStackProtocol.swift in Sources */,
+				1960BEB62323D86A00BE4151 /* RootViewControllerProvider.swift in Sources */,
 				1960BEB12323D2B300BE4151 /* NSManagedObject+URIRepresentation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,7 +361,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19F87DEB2323AFCF008473C3 /* TestDataStackTests.swift in Sources */,
+				1960BEB82323DBBF00BE4151 /* UserDefaults+clearAll.swift in Sources */,
+				19F87DEB2323AFCF008473C3 /* CoreDataStackProtocolTests.swift in Sources */,
 				19F87DE72323AED3008473C3 /* TestDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

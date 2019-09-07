@@ -2,7 +2,11 @@
 import Foundation
 import XCTest
 
-class TestDataStackTests: XCTestCase {
+class CoreDataStackProtocolTests: XCTestCase {
+    override func setUp() {
+        UserDefaults.standard.clearAll()
+    }
+
     func testSynchronousSetup() {
         // If this crashes, something has gone horribly wrong
         let _ = TestDataStack()
@@ -84,5 +88,39 @@ class TestDataStackTests: XCTestCase {
 
         XCTAssertEqual(copy.name, entity.name)
         XCTAssertEqual(copy.url, entity.url)
+    }
+
+    func testPreferredConfigurationIsNilByDefault() {
+        let stack = TestDataStack()
+        XCTAssertNil(stack.preferredServerConfiguration())
+    }
+
+    func testSetPreferredConfiguration() {
+        let stack = TestDataStack()
+
+        let entity = stack.createEntity(ServerConfiguration.self)
+        entity.name = "pref"
+        entity.url = URL(string: "https://www.pref.com")
+
+        stack.setPreferredServerConfiguration(entity)
+        XCTAssertEqual(stack.preferredServerConfiguration(), entity)
+    }
+
+    func testOverridePreferredConfiguration() {
+        let stack = TestDataStack()
+
+        let config1 = stack.createEntity(ServerConfiguration.self)
+        config1.name = "pref1"
+        config1.url = URL(string: "https://www.pref1.com")
+
+        let config2 = stack.createEntity(ServerConfiguration.self)
+        config2.name = "pref2"
+        config2.url = URL(string: "https://www.pref2.com")
+
+        XCTAssertNil(stack.preferredServerConfiguration())
+        stack.setPreferredServerConfiguration(config1)
+        XCTAssertEqual(stack.preferredServerConfiguration(), config1)
+        stack.setPreferredServerConfiguration(config2)
+        XCTAssertEqual(stack.preferredServerConfiguration(), config2)
     }
 }
