@@ -18,6 +18,15 @@
 		1960BEB62323D86A00BE4151 /* RootViewControllerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960BEB52323D86A00BE4151 /* RootViewControllerProvider.swift */; };
 		1960BEB82323DBBF00BE4151 /* UserDefaults+clearAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960BEB72323DBBF00BE4151 /* UserDefaults+clearAll.swift */; };
 		1960BEBA2323DD7800BE4151 /* InitialConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960BEB92323DD7800BE4151 /* InitialConfigViewController.swift */; };
+		1960BEBD2323FF2800BE4151 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960BEBC2323FF2800BE4151 /* NetworkClient.swift */; };
+		1960BEC02323FF7600BE4151 /* RootDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960BEBF2323FF7600BE4151 /* RootDTO.swift */; };
+		1960BEC223242EBC00BE4151 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960BEC123242EBC00BE4151 /* ApiClient.swift */; };
+		1960BEC423242F5F00BE4151 /* Decodable+fromJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960BEC323242F5F00BE4151 /* Decodable+fromJson.swift */; };
+		1960BEC6232433B500BE4151 /* NetworkClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960BEC5232433B500BE4151 /* NetworkClientProtocol.swift */; };
+		1960BECA2324346E00BE4151 /* ApiClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960BEC92324346E00BE4151 /* ApiClientTests.swift */; };
+		1960BECC2324349A00BE4151 /* MockNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960BECB2324349A00BE4151 /* MockNetworkClient.swift */; };
+		19CBF0FF232436F70087D305 /* MockNetworkClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CBF0FE232436F70087D305 /* MockNetworkClientTests.swift */; };
+		19CBF10223243CC20087D305 /* TestAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19CBF10123243CC20087D305 /* TestAssets.xcassets */; };
 		19F87DE72323AED3008473C3 /* TestDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F87DE62323AED3008473C3 /* TestDataStack.swift */; };
 		19F87DEB2323AFCF008473C3 /* CoreDataStackProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F87DEA2323AFCF008473C3 /* CoreDataStackProtocolTests.swift */; };
 		19F87DEE2323B172008473C3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F87DED2323B172008473C3 /* CoreDataStack.swift */; };
@@ -60,6 +69,15 @@
 		1960BEB52323D86A00BE4151 /* RootViewControllerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewControllerProvider.swift; sourceTree = "<group>"; };
 		1960BEB72323DBBF00BE4151 /* UserDefaults+clearAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+clearAll.swift"; sourceTree = "<group>"; };
 		1960BEB92323DD7800BE4151 /* InitialConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialConfigViewController.swift; sourceTree = "<group>"; };
+		1960BEBC2323FF2800BE4151 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		1960BEBF2323FF7600BE4151 /* RootDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootDTO.swift; sourceTree = "<group>"; };
+		1960BEC123242EBC00BE4151 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		1960BEC323242F5F00BE4151 /* Decodable+fromJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decodable+fromJson.swift"; sourceTree = "<group>"; };
+		1960BEC5232433B500BE4151 /* NetworkClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientProtocol.swift; sourceTree = "<group>"; };
+		1960BEC92324346E00BE4151 /* ApiClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClientTests.swift; sourceTree = "<group>"; };
+		1960BECB2324349A00BE4151 /* MockNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkClient.swift; sourceTree = "<group>"; };
+		19CBF0FE232436F70087D305 /* MockNetworkClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkClientTests.swift; sourceTree = "<group>"; };
+		19CBF10123243CC20087D305 /* TestAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestAssets.xcassets; sourceTree = "<group>"; };
 		19F87DE62323AED3008473C3 /* TestDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataStack.swift; sourceTree = "<group>"; };
 		19F87DEA2323AFCF008473C3 /* CoreDataStackProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStackProtocolTests.swift; sourceTree = "<group>"; };
 		19F87DED2323B172008473C3 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -119,10 +137,11 @@
 			isa = PBXGroup;
 			children = (
 				1960BEB32323D7D400BE4151 /* Core */,
-				19F87DEC2323B166008473C3 /* Model */,
 				1960BEAF2323D2A100BE4151 /* Extensions */,
-				19F87DE32323A3F7008473C3 /* ViewControllers */,
+				19F87DEC2323B166008473C3 /* Model */,
+				1960BEBB2323FEF100BE4151 /* Network */,
 				1960BEB42323D7E200BE4151 /* Storyboards */,
+				19F87DE32323A3F7008473C3 /* ViewControllers */,
 				194136672323A0500087BCC6 /* Assets.xcassets */,
 				1941366C2323A0500087BCC6 /* Info.plist */,
 				194136642323A04E0087BCC6 /* newjrk.xcdatamodeld */,
@@ -137,6 +156,7 @@
 				19F87DE82323AFB7008473C3 /* Core */,
 				19F87DE92323AFC1008473C3 /* Tests */,
 				194136772323A0510087BCC6 /* Info.plist */,
+				19CBF10123243CC20087D305 /* TestAssets.xcassets */,
 			);
 			path = newjrkTests;
 			sourceTree = "<group>";
@@ -154,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				1960BEB02323D2B300BE4151 /* NSManagedObject+URIRepresentation.swift */,
+				1960BEC323242F5F00BE4151 /* Decodable+fromJson.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -177,6 +198,51 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		1960BEBB2323FEF100BE4151 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1960BEBE2323FF5900BE4151 /* API */,
+				1960BEBC2323FF2800BE4151 /* NetworkClient.swift */,
+				1960BEC5232433B500BE4151 /* NetworkClientProtocol.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		1960BEBE2323FF5900BE4151 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				1960BEBF2323FF7600BE4151 /* RootDTO.swift */,
+				1960BEC123242EBC00BE4151 /* ApiClient.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		1960BEC72324345D00BE4151 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1960BEC82324346400BE4151 /* API */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		1960BEC82324346400BE4151 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				1960BEC92324346E00BE4151 /* ApiClientTests.swift */,
+				1960BECB2324349A00BE4151 /* MockNetworkClient.swift */,
+				19CBF0FE232436F70087D305 /* MockNetworkClientTests.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		1960BECD232434A200BE4151 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				19F87DEA2323AFCF008473C3 /* CoreDataStackProtocolTests.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		19F87DE32323A3F7008473C3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,7 +263,8 @@
 		19F87DE92323AFC1008473C3 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				19F87DEA2323AFCF008473C3 /* CoreDataStackProtocolTests.swift */,
+				1960BEC72324345D00BE4151 /* Network */,
+				1960BECD232434A200BE4151 /* Model */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -333,6 +400,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19CBF10223243CC20087D305 /* TestAssets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,11 +418,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1960BEC223242EBC00BE4151 /* ApiClient.swift in Sources */,
 				194136662323A04E0087BCC6 /* newjrk.xcdatamodeld in Sources */,
 				1960BEBA2323DD7800BE4151 /* InitialConfigViewController.swift in Sources */,
 				1941365C2323A04E0087BCC6 /* AppDelegate.swift in Sources */,
+				1960BEC02323FF7600BE4151 /* RootDTO.swift in Sources */,
 				1941365E2323A04E0087BCC6 /* SceneDelegate.swift in Sources */,
+				1960BEC6232433B500BE4151 /* NetworkClientProtocol.swift in Sources */,
 				19F87DEE2323B172008473C3 /* CoreDataStack.swift in Sources */,
+				1960BEC423242F5F00BE4151 /* Decodable+fromJson.swift in Sources */,
+				1960BEBD2323FF2800BE4151 /* NetworkClient.swift in Sources */,
 				19F87DF22323B485008473C3 /* CoreDataStackProtocol.swift in Sources */,
 				1960BEB62323D86A00BE4151 /* RootViewControllerProvider.swift in Sources */,
 				1960BEB12323D2B300BE4151 /* NSManagedObject+URIRepresentation.swift in Sources */,
@@ -366,8 +439,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1960BEB82323DBBF00BE4151 /* UserDefaults+clearAll.swift in Sources */,
+				1960BECC2324349A00BE4151 /* MockNetworkClient.swift in Sources */,
 				19F87DEB2323AFCF008473C3 /* CoreDataStackProtocolTests.swift in Sources */,
 				19F87DE72323AED3008473C3 /* TestDataStack.swift in Sources */,
+				1960BECA2324346E00BE4151 /* ApiClientTests.swift in Sources */,
+				19CBF0FF232436F70087D305 /* MockNetworkClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

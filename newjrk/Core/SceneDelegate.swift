@@ -5,14 +5,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let dataStack = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack else { return }
-        let vcProvider = RootViewControllerProvider(dataStack: dataStack)
+        let isRunningTests = UserDefaults.standard.bool(forKey: "isRunningUnitTests")
+        if !isRunningTests {
+            guard let dataStack = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack else { return }
+            let vcProvider = RootViewControllerProvider(dataStack: dataStack)
 
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        window?.windowScene = windowScene
-        window?.rootViewController = vcProvider.createRootViewController()
-        window?.makeKeyAndVisible()
+            guard let windowScene = (scene as? UIWindowScene) else { return }
+            window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+            window?.windowScene = windowScene
+            window?.rootViewController = vcProvider.createRootViewController()
+            window?.makeKeyAndVisible()
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) { }

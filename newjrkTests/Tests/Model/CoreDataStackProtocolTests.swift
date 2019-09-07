@@ -35,7 +35,7 @@ class CoreDataStackProtocolTests: XCTestCase {
         let stack = TestDataStack()
 
         let entity = stack.createEntity(ServerConfiguration.self)
-        entity.name = "1234"
+        entity.url = URL(string: "localhost")
 
         let fetchExpectation = expectation(description: "fetch completion was called")
         stack.fetch(ServerConfiguration.self) { results, _ in
@@ -44,7 +44,7 @@ class CoreDataStackProtocolTests: XCTestCase {
                 fatalError()
             }
             XCTAssertEqual(1, results.count)
-            XCTAssertEqual("1234", results[0].name ?? "")
+            XCTAssertEqual("localhost", results[0].url!.absoluteString)
             fetchExpectation.fulfill()
         }
 
@@ -78,7 +78,6 @@ class CoreDataStackProtocolTests: XCTestCase {
     func testFetchById() {
         let stack = TestDataStack()
         let entity = stack.createEntity(ServerConfiguration.self)
-        entity.name = "12345"
         entity.url = URL(string: "https://www.google.com")
 
         guard let copy = stack.fetch(ServerConfiguration.self, byURIRepresentation: entity.uriRepresentation) else {
@@ -86,7 +85,6 @@ class CoreDataStackProtocolTests: XCTestCase {
             return
         }
 
-        XCTAssertEqual(copy.name, entity.name)
         XCTAssertEqual(copy.url, entity.url)
     }
 
@@ -99,7 +97,6 @@ class CoreDataStackProtocolTests: XCTestCase {
         let stack = TestDataStack()
 
         let entity = stack.createEntity(ServerConfiguration.self)
-        entity.name = "pref"
         entity.url = URL(string: "https://www.pref.com")
 
         stack.setPreferredServerConfiguration(entity)
@@ -110,11 +107,9 @@ class CoreDataStackProtocolTests: XCTestCase {
         let stack = TestDataStack()
 
         let config1 = stack.createEntity(ServerConfiguration.self)
-        config1.name = "pref1"
         config1.url = URL(string: "https://www.pref1.com")
 
         let config2 = stack.createEntity(ServerConfiguration.self)
-        config2.name = "pref2"
         config2.url = URL(string: "https://www.pref2.com")
 
         XCTAssertNil(stack.preferredServerConfiguration())
