@@ -14,6 +14,10 @@ class InitialConfigViewController: UIViewController {
 
     private func submit(url: URL) {
         print("Submitted URL: \(url)")
+        let loadingView = LoadingView.show(in: self, withMessage: "Testing stuff")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            loadingView?.remove()
+        })
     }
 }
 

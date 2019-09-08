@@ -31,6 +31,8 @@
 		19CBF1072325342E0087D305 /* ServerSetupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CBF1062325342E0087D305 /* ServerSetupTests.swift */; };
 		19CBF1092325349A0087D305 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CBF1082325349A0087D305 /* TestData.swift */; };
 		19CBF10C23254B5F0087D305 /* ServerConfiguration+picturePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CBF10B23254B5F0087D305 /* ServerConfiguration+picturePath.swift */; };
+		19CBF10F232553000087D305 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19CBF10E232553000087D305 /* LoadingView.xib */; };
+		19CBF111232554080087D305 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CBF110232554080087D305 /* LoadingView.swift */; };
 		19F87DE72323AED3008473C3 /* TestDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F87DE62323AED3008473C3 /* TestDataStack.swift */; };
 		19F87DEB2323AFCF008473C3 /* CoreDataStackProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F87DEA2323AFCF008473C3 /* CoreDataStackProtocolTests.swift */; };
 		19F87DEE2323B172008473C3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F87DED2323B172008473C3 /* CoreDataStack.swift */; };
@@ -86,6 +88,8 @@
 		19CBF1062325342E0087D305 /* ServerSetupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSetupTests.swift; sourceTree = "<group>"; };
 		19CBF1082325349A0087D305 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		19CBF10B23254B5F0087D305 /* ServerConfiguration+picturePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServerConfiguration+picturePath.swift"; sourceTree = "<group>"; };
+		19CBF10E232553000087D305 /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		19CBF110232554080087D305 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		19F87DE62323AED3008473C3 /* TestDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataStack.swift; sourceTree = "<group>"; };
 		19F87DEA2323AFCF008473C3 /* CoreDataStackProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStackProtocolTests.swift; sourceTree = "<group>"; };
 		19F87DED2323B172008473C3 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -148,8 +152,8 @@
 				1960BEAF2323D2A100BE4151 /* Extensions */,
 				19F87DEC2323B166008473C3 /* Model */,
 				1960BEBB2323FEF100BE4151 /* Network */,
-				1960BEB42323D7E200BE4151 /* Storyboards */,
 				19F87DE32323A3F7008473C3 /* ViewControllers */,
+				1960BEB42323D7E200BE4151 /* Views */,
 				194136672323A0500087BCC6 /* Assets.xcassets */,
 				1941366C2323A0500087BCC6 /* Info.plist */,
 				194136642323A04E0087BCC6 /* newjrk.xcdatamodeld */,
@@ -200,13 +204,14 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		1960BEB42323D7E200BE4151 /* Storyboards */ = {
+		1960BEB42323D7E200BE4151 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				19CBF10D232552F50087D305 /* LoadingView */,
 				194136612323A04E0087BCC6 /* Main.storyboard */,
 				194136692323A0500087BCC6 /* LaunchScreen.storyboard */,
 			);
-			path = Storyboards;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		1960BEBB2323FEF100BE4151 /* Network */ = {
@@ -260,6 +265,15 @@
 				19CBF1062325342E0087D305 /* ServerSetupTests.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		19CBF10D232552F50087D305 /* LoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				19CBF10E232553000087D305 /* LoadingView.xib */,
+				19CBF110232554080087D305 /* LoadingView.swift */,
+			);
+			path = LoadingView;
 			sourceTree = "<group>";
 		};
 		19F87DE32323A3F7008473C3 /* ViewControllers */ = {
@@ -411,6 +425,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1941366B2323A0500087BCC6 /* LaunchScreen.storyboard in Resources */,
+				19CBF10F232553000087D305 /* LoadingView.xib in Resources */,
 				194136682323A0500087BCC6 /* Assets.xcassets in Resources */,
 				194136632323A04E0087BCC6 /* Main.storyboard in Resources */,
 			);
@@ -443,6 +458,7 @@
 				194136662323A04E0087BCC6 /* newjrk.xcdatamodeld in Sources */,
 				1960BEBA2323DD7800BE4151 /* InitialConfigViewController.swift in Sources */,
 				1941365C2323A04E0087BCC6 /* AppDelegate.swift in Sources */,
+				19CBF111232554080087D305 /* LoadingView.swift in Sources */,
 				1960BEC02323FF7600BE4151 /* RootDTO.swift in Sources */,
 				1941365E2323A04E0087BCC6 /* SceneDelegate.swift in Sources */,
 				1960BEC6232433B500BE4151 /* NetworkClientProtocol.swift in Sources */,
