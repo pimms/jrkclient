@@ -2,20 +2,11 @@
 import Foundation
 import XCTest
 
-fileprivate let rootDocumentResponse =
-"""
-{
-    "streamName": "test stream",
-    "streamPicture": "/picture.png",
-    "playlist": "/playlist.m3u8"
-}
-""".data(using: .utf8)!
-
 class ApiClientTests: XCTestCase {
     private let networkClient = MockNetworkClient()
 
     func testCompletionHandlerGetsCalledOnSuccess() {
-        networkClient.expect(rootDocumentResponse, forPath: "/")
+        networkClient.expect(TestData.successfulRootDocumentResponse, forPath: "/")
 
         let expect = expectation(description: "init completion handler called")
         let _ = ApiClient(networkClient: networkClient) { error in
@@ -105,7 +96,7 @@ class ApiClientTests: XCTestCase {
 
     private func createClient(mockSuccessfulResponse: Bool = true) -> ApiClient {
         if mockSuccessfulResponse {
-            networkClient.expect(rootDocumentResponse, forPath: "/")
+            networkClient.expect(TestData.successfulRootDocumentResponse, forPath: "/")
         }
 
         let expect = expectation(description: "init completion handler called")
