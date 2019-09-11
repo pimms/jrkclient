@@ -1,18 +1,10 @@
-//
-//  AppDelegate.swift
-//  newjrk
-//
-//  Created by pimms on 07/09/2019.
-//  Copyright © 2019 Joakim Stien. All rights reserved.
-//
-
 import UIKit
 import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    lazy var coreDataStack = CoreDataStack()
+    lazy var coreDataStack: CoreDataStackProtocol = CoreDataStack()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         return true
