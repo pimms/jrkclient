@@ -25,7 +25,7 @@ class InitialConfigViewController: UIViewController {
     }
 
     private func submit(url: URL) {
-        loadingView = LoadingView.show(in: self, withMessage: "Testing stuff")
+        loadingView = LoadingView.show(in: self, withMessage: "Connecting...")
         urlField?.resignFirstResponder()
 
         let networkClient = NetworkClient(rootURL: url)
@@ -76,21 +76,15 @@ class InitialConfigViewController: UIViewController {
         else { return }
 
         // OKAY, time to push a new view controller of some sort
-        handleSetupError(ConfigError.notImplementedYet)
+        dataStack.setPreferredServerConfiguration(serverConfig)
+        let playerVc = UIStoryboard.instantiate(PlayerViewController.self)
+        playerVc.setup(withServerConfiguration: serverConfig)
+        navigationController?.setViewControllers([playerVc], animated: true)
     }
 
     private func handleSetupError(_ error: Error?) {
         loadingView?.remove()
-
-        let title = "Setup Failure"
-        var message = "Failed to connect to server"
-        if let error = error {
-            message += "\n\n\(error)"
-        }
-
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alertController, animated: true)
+        UIAlertController.display(error: error, withTitle: "Setup Failure", message: "Failed to connect to server", in: self)
     }
 }
 

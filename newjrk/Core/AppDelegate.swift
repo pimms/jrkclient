@@ -4,6 +4,9 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    // TODO: The data stack should either be an instance of the SceneDelegate, or the whole
+    // application should NOT support multiple scenes. Currently, we may enter into foul ball
+    // country if the user opens multiple scenes.
     lazy var coreDataStack: CoreDataStackProtocol = CoreDataStack()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

@@ -10,12 +10,29 @@ class RootViewControllerProvider {
     // MARK: - Internal methods
 
     func createRootViewController() -> UIViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: .main)
-
-        if let preferredConfiguration = dataStack.preferredServerConfiguration() {
-            fatalError("TODO: Initiate a VC with a defined configuration: \(preferredConfiguration)")
+        if let playerVc = createPlayerViewControllerIfPossible() {
+            return playerVc
         }
 
-        return storyboard.instantiateViewController(identifier: "InitialConfigViewController")
+        return createInitialConfigurationViewController()
+    }
+
+    // MARK: - Private methods
+
+    private func createPlayerViewControllerIfPossible() -> UIViewController? {
+        if let preferredConfiguration = dataStack.preferredServerConfiguration() {
+            let playerVc = UIStoryboard.instantiate(PlayerViewController.self)
+            playerVc.setup(withServerConfiguration: preferredConfiguration)
+            return playerVc
+        }
+
+        return nil
+    }
+
+    private func createInitialConfigurationViewController() -> UIViewController {
+        let rootViewController = UIStoryboard.instantiate(InitialConfigViewController.self)
+        let navigationController = UINavigationController(rootViewController: rootViewController)
+        navigationController.setNavigationBarHidden(true, animated: false)
+        return navigationController
     }
 }

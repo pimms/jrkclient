@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19176D3E2329767100D05187 /* UIStoryboard+instantiate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19176D3D2329767100D05187 /* UIStoryboard+instantiate.swift */; };
 		1941365C2323A04E0087BCC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1941365B2323A04E0087BCC6 /* AppDelegate.swift */; };
 		1941365E2323A04E0087BCC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1941365D2323A04E0087BCC6 /* SceneDelegate.swift */; };
 		194136632323A04E0087BCC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 194136612323A04E0087BCC6 /* Main.storyboard */; };
@@ -25,6 +26,8 @@
 		1960BEC6232433B500BE4151 /* NetworkClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960BEC5232433B500BE4151 /* NetworkClientProtocol.swift */; };
 		1960BECA2324346E00BE4151 /* ApiClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960BEC92324346E00BE4151 /* ApiClientTests.swift */; };
 		1960BECC2324349A00BE4151 /* MockNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960BECB2324349A00BE4151 /* MockNetworkClient.swift */; };
+		19A6E7F3232948DF00CEC94D /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A6E7F2232948DF00CEC94D /* PlayerViewController.swift */; };
+		19A6E7F5232949D400CEC94D /* UIAlertController+displayError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A6E7F4232949D400CEC94D /* UIAlertController+displayError.swift */; };
 		19CBF0FF232436F70087D305 /* MockNetworkClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CBF0FE232436F70087D305 /* MockNetworkClientTests.swift */; };
 		19CBF10223243CC20087D305 /* TestAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19CBF10123243CC20087D305 /* TestAssets.xcassets */; };
 		19CBF10523252F330087D305 /* ServerSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CBF10423252F330087D305 /* ServerSetup.swift */; };
@@ -58,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		19176D3D2329767100D05187 /* UIStoryboard+instantiate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+instantiate.swift"; sourceTree = "<group>"; };
 		194136582323A04E0087BCC6 /* newjrk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = newjrk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1941365B2323A04E0087BCC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1941365D2323A04E0087BCC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +86,8 @@
 		1960BEC5232433B500BE4151 /* NetworkClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientProtocol.swift; sourceTree = "<group>"; };
 		1960BEC92324346E00BE4151 /* ApiClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClientTests.swift; sourceTree = "<group>"; };
 		1960BECB2324349A00BE4151 /* MockNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkClient.swift; sourceTree = "<group>"; };
+		19A6E7F2232948DF00CEC94D /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		19A6E7F4232949D400CEC94D /* UIAlertController+displayError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+displayError.swift"; sourceTree = "<group>"; };
 		19CBF0FE232436F70087D305 /* MockNetworkClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkClientTests.swift; sourceTree = "<group>"; };
 		19CBF10123243CC20087D305 /* TestAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestAssets.xcassets; sourceTree = "<group>"; };
 		19CBF10423252F330087D305 /* ServerSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSetup.swift; sourceTree = "<group>"; };
@@ -189,6 +195,8 @@
 				1960BEB02323D2B300BE4151 /* NSManagedObject+URIRepresentation.swift */,
 				1960BEC323242F5F00BE4151 /* Decodable+fromJson.swift */,
 				19CBF10B23254B5F0087D305 /* ServerConfiguration+picturePath.swift */,
+				19A6E7F4232949D400CEC94D /* UIAlertController+displayError.swift */,
+				19176D3D2329767100D05187 /* UIStoryboard+instantiate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -280,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				1960BEB92323DD7800BE4151 /* InitialConfigViewController.swift */,
+				19A6E7F2232948DF00CEC94D /* PlayerViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -455,13 +464,16 @@
 			files = (
 				1960BEC223242EBC00BE4151 /* ApiClient.swift in Sources */,
 				19CBF10C23254B5F0087D305 /* ServerConfiguration+picturePath.swift in Sources */,
+				19A6E7F5232949D400CEC94D /* UIAlertController+displayError.swift in Sources */,
 				194136662323A04E0087BCC6 /* newjrk.xcdatamodeld in Sources */,
 				1960BEBA2323DD7800BE4151 /* InitialConfigViewController.swift in Sources */,
 				1941365C2323A04E0087BCC6 /* AppDelegate.swift in Sources */,
 				19CBF111232554080087D305 /* LoadingView.swift in Sources */,
+				19176D3E2329767100D05187 /* UIStoryboard+instantiate.swift in Sources */,
 				1960BEC02323FF7600BE4151 /* RootDTO.swift in Sources */,
 				1941365E2323A04E0087BCC6 /* SceneDelegate.swift in Sources */,
 				1960BEC6232433B500BE4151 /* NetworkClientProtocol.swift in Sources */,
+				19A6E7F3232948DF00CEC94D /* PlayerViewController.swift in Sources */,
 				19F87DEE2323B172008473C3 /* CoreDataStack.swift in Sources */,
 				1960BEC423242F5F00BE4151 /* Decodable+fromJson.swift in Sources */,
 				1960BEBD2323FF2800BE4151 /* NetworkClient.swift in Sources */,
