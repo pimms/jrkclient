@@ -1,8 +1,20 @@
 import UIKit
 
 class InitialConfigViewController: UIViewController {
+    private enum ConfigError: String, Error {
+        case rootDocumentFailure = "Failed to load the root document of the specified server."
+        case coreDataFailure = "Failed to get a handle to the Core Data stack."
+        case serverConfigCreationError = "Failed to create a ServerConfiguration instance."
+        case serverSetupError = "Failed to perform initial server setup."
+        case notImplementedYet = "TODO!"
+    }
+
     @IBOutlet private var urlField: UITextField?
     @IBOutlet private var errorLabel: UILabel?
+
+    private lazy var dataStack = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack
+    private var loadingView: LoadingView? { didSet { oldValue?.remove() } }
+    private var serverSetup: ServerSetup?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -13,11 +25,72 @@ class InitialConfigViewController: UIViewController {
     }
 
     private func submit(url: URL) {
-        print("Submitted URL: \(url)")
-        let loadingView = LoadingView.show(in: self, withMessage: "Testing stuff")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-            loadingView?.remove()
-        })
+        loadingView = LoadingView.show(in: self, withMessage: "Testing stuff")
+        urlField?.resignFirstResponder()
+
+        let networkClient = NetworkClient(rootURL: url)
+        let apiClient = ApiClient(networkClient: networkClient)
+
+        apiClient.loadRootDocument { [weak self] error in
+            guard error == nil else {
+                self?.handleSetupError(ConfigError.rootDocumentFailure)
+                return
+            }
+
+            guard let dataStack = self?.dataStack else {
+                self?.handleSetupError(ConfigError.coreDataFailure)
+                return
+            }
+
+            guard let serverConfig = self?.createServerConfig(fromUrl: url) else {
+                self?.handleSetupError(ConfigError.serverConfigCreationError)
+                return
+            }
+
+            self?.serverSetup = ServerSetup(apiClient: apiClient, dataStack: dataStack, serverConfig: serverConfig)
+            self?.serverSetup?.performInitialSetup { error in
+                guard error == nil else {
+                    self?.handleSetupError(ConfigError.serverSetupError)
+                    return
+                }
+
+                self?.handleSetupCompleted(serverConfig: serverConfig)
+            }
+        }
+    }
+
+    private func createServerConfig(fromUrl url: URL) -> ServerConfiguration? {
+        guard let serverConfig = dataStack?.createEntity(ServerConfiguration.self) else { return nil }
+        serverConfig.url = url
+        return serverConfig
+    }
+
+    private func handleSetupCompleted(serverConfig: ServerConfiguration) {
+        loadingView?.remove()
+
+        guard
+            let dataStack = dataStack,
+            serverConfig.name != nil,
+            serverConfig.url != nil,
+            dataStack.save()
+        else { return }
+
+        // OKAY, time to push a new view controller of some sort
+        handleSetupError(ConfigError.notImplementedYet)
+    }
+
+    private func handleSetupError(_ error: Error?) {
+        loadingView?.remove()
+
+        let title = "Setup Failure"
+        var message = "Failed to connect to server"
+        if let error = error {
+            message += "\n\n\(error)"
+        }
+
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertController, animated: true)
     }
 }
 
