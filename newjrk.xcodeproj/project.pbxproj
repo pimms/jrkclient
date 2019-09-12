@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		19176D3E2329767100D05187 /* UIStoryboard+instantiate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19176D3D2329767100D05187 /* UIStoryboard+instantiate.swift */; };
+		19176D4023297E8400D05187 /* String+stableHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19176D3F23297E8400D05187 /* String+stableHash.swift */; };
 		1941365C2323A04E0087BCC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1941365B2323A04E0087BCC6 /* AppDelegate.swift */; };
 		1941365E2323A04E0087BCC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1941365D2323A04E0087BCC6 /* SceneDelegate.swift */; };
 		194136632323A04E0087BCC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 194136612323A04E0087BCC6 /* Main.storyboard */; };
@@ -62,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		19176D3D2329767100D05187 /* UIStoryboard+instantiate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+instantiate.swift"; sourceTree = "<group>"; };
+		19176D3F23297E8400D05187 /* String+stableHash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+stableHash.swift"; sourceTree = "<group>"; };
 		194136582323A04E0087BCC6 /* newjrk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = newjrk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1941365B2323A04E0087BCC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1941365D2323A04E0087BCC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				19CBF10B23254B5F0087D305 /* ServerConfiguration+picturePath.swift */,
 				19A6E7F4232949D400CEC94D /* UIAlertController+displayError.swift */,
 				19176D3D2329767100D05187 /* UIStoryboard+instantiate.swift */,
+				19176D3F23297E8400D05187 /* String+stableHash.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				1960BEBA2323DD7800BE4151 /* InitialConfigViewController.swift in Sources */,
 				1941365C2323A04E0087BCC6 /* AppDelegate.swift in Sources */,
 				19CBF111232554080087D305 /* LoadingView.swift in Sources */,
+				19176D4023297E8400D05187 /* String+stableHash.swift in Sources */,
 				19176D3E2329767100D05187 /* UIStoryboard+instantiate.swift in Sources */,
 				1960BEC02323FF7600BE4151 /* RootDTO.swift in Sources */,
 				1941365E2323A04E0087BCC6 /* SceneDelegate.swift in Sources */,

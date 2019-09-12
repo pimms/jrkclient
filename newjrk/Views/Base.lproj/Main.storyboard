@@ -105,22 +105,33 @@
                                 <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <state key="normal" backgroundImage="play.circle" catalog="system"/>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fUX-CA-1gj">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="295"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="fUX-CA-1gj" firstAttribute="leading" secondItem="453-qK-dbK" secondAttribute="leading" id="BSj-WJ-HVR"/>
                             <constraint firstItem="eM9-hG-q4d" firstAttribute="top" secondItem="P14-wA-Vfb" secondAttribute="bottom" constant="31.5" id="COu-sg-DJx"/>
                             <constraint firstItem="P14-wA-Vfb" firstAttribute="leading" secondItem="453-qK-dbK" secondAttribute="leading" constant="16" id="HPt-LR-kKy"/>
                             <constraint firstItem="453-qK-dbK" firstAttribute="trailing" secondItem="P14-wA-Vfb" secondAttribute="trailing" constant="16" id="ecT-9u-KhD"/>
                             <constraint firstItem="P14-wA-Vfb" firstAttribute="centerY" secondItem="453-qK-dbK" secondAttribute="centerY" id="hFy-Vg-W7C"/>
+                            <constraint firstItem="P14-wA-Vfb" firstAttribute="top" secondItem="fUX-CA-1gj" secondAttribute="bottom" constant="59.666666666666686" id="hiM-3A-elI"/>
+                            <constraint firstItem="fUX-CA-1gj" firstAttribute="top" secondItem="453-qK-dbK" secondAttribute="top" id="r7h-s2-LJh"/>
+                            <constraint firstItem="453-qK-dbK" firstAttribute="trailing" secondItem="fUX-CA-1gj" secondAttribute="trailing" id="rA5-bW-mDA"/>
                             <constraint firstItem="eM9-hG-q4d" firstAttribute="centerX" secondItem="453-qK-dbK" secondAttribute="centerX" id="tDr-Rm-99F"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="453-qK-dbK"/>
                     </view>
                     <navigationItem key="navigationItem" id="xgd-pw-bqO"/>
+                    <connections>
+                        <outlet property="currentlyPlayingLabel" destination="P14-wA-Vfb" id="zYa-Fn-lhS"/>
+                        <outlet property="imageView" destination="fUX-CA-1gj" id="g0L-Ak-tPm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZB1-zl-i7k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2.3999999999999999" y="814.54272863568224"/>
+            <point key="canvasLocation" x="-2.8985507246376816" y="814.4021739130435"/>
         </scene>
     </scenes>
     <resources>
