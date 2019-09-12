@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		19176D3E2329767100D05187 /* UIStoryboard+instantiate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19176D3D2329767100D05187 /* UIStoryboard+instantiate.swift */; };
 		19176D4023297E8400D05187 /* String+stableHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19176D3F23297E8400D05187 /* String+stableHash.swift */; };
+		19176D42232AC1F400D05187 /* GradientBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19176D41232AC1F400D05187 /* GradientBlurView.swift */; };
+		19176D44232ACA1200D05187 /* UIView+fillInSuperview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19176D43232ACA1200D05187 /* UIView+fillInSuperview.swift */; };
 		1941365C2323A04E0087BCC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1941365B2323A04E0087BCC6 /* AppDelegate.swift */; };
 		1941365E2323A04E0087BCC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1941365D2323A04E0087BCC6 /* SceneDelegate.swift */; };
 		194136632323A04E0087BCC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 194136612323A04E0087BCC6 /* Main.storyboard */; };
@@ -64,6 +66,8 @@
 /* Begin PBXFileReference section */
 		19176D3D2329767100D05187 /* UIStoryboard+instantiate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+instantiate.swift"; sourceTree = "<group>"; };
 		19176D3F23297E8400D05187 /* String+stableHash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+stableHash.swift"; sourceTree = "<group>"; };
+		19176D41232AC1F400D05187 /* GradientBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBlurView.swift; sourceTree = "<group>"; };
+		19176D43232ACA1200D05187 /* UIView+fillInSuperview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+fillInSuperview.swift"; sourceTree = "<group>"; };
 		194136582323A04E0087BCC6 /* newjrk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = newjrk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1941365B2323A04E0087BCC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1941365D2323A04E0087BCC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 				19A6E7F4232949D400CEC94D /* UIAlertController+displayError.swift */,
 				19176D3D2329767100D05187 /* UIStoryboard+instantiate.swift */,
 				19176D3F23297E8400D05187 /* String+stableHash.swift */,
+				19176D43232ACA1200D05187 /* UIView+fillInSuperview.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -221,6 +226,7 @@
 				19CBF10D232552F50087D305 /* LoadingView */,
 				194136612323A04E0087BCC6 /* Main.storyboard */,
 				194136692323A0500087BCC6 /* LaunchScreen.storyboard */,
+				19176D41232AC1F400D05187 /* GradientBlurView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -465,6 +471,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19176D42232AC1F400D05187 /* GradientBlurView.swift in Sources */,
 				1960BEC223242EBC00BE4151 /* ApiClient.swift in Sources */,
 				19CBF10C23254B5F0087D305 /* ServerConfiguration+picturePath.swift in Sources */,
 				19A6E7F5232949D400CEC94D /* UIAlertController+displayError.swift in Sources */,
@@ -485,6 +492,7 @@
 				1960BEB62323D86A00BE4151 /* RootViewControllerProvider.swift in Sources */,
 				19CBF10523252F330087D305 /* ServerSetup.swift in Sources */,
 				1960BEB12323D2B300BE4151 /* NSManagedObject+URIRepresentation.swift in Sources */,
+				19176D44232ACA1200D05187 /* UIView+fillInSuperview.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
