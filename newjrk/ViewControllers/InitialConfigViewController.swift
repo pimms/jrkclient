@@ -12,7 +12,7 @@ class InitialConfigViewController: UIViewController {
     @IBOutlet private var urlField: UITextField?
     @IBOutlet private var errorLabel: UILabel?
 
-    private lazy var dataStack = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack
+    private lazy var dataStack = AppDelegate.shared.coreDataStack
     private var loadingView: LoadingView? { didSet { oldValue?.remove() } }
     private var serverSetup: ServerSetup?
 
@@ -60,7 +60,7 @@ class InitialConfigViewController: UIViewController {
     }
 
     private func createServerConfig(fromUrl url: URL) -> ServerConfiguration? {
-        guard let serverConfig = dataStack?.createEntity(ServerConfiguration.self) else { return nil }
+        let serverConfig = dataStack.createEntity(ServerConfiguration.self)
         serverConfig.url = url
         return serverConfig
     }
@@ -69,14 +69,13 @@ class InitialConfigViewController: UIViewController {
         loadingView?.remove()
 
         guard
-            let dataStack = dataStack,
             serverConfig.name != nil,
             serverConfig.url != nil,
             dataStack.save()
         else { return }
 
-        // OKAY, time to push a new view controller of some sort
         dataStack.setPreferredServerConfiguration(serverConfig)
+
         let playerVc = UIStoryboard.instantiate(PlayerViewController.self)
         playerVc.setup(withServerConfiguration: serverConfig)
         navigationController?.setViewControllers([playerVc], animated: true)

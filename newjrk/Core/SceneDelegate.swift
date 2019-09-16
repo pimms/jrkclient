@@ -7,7 +7,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         let isRunningTests = UserDefaults.standard.bool(forKey: "isRunningUnitTests")
         if !isRunningTests {
-            guard let dataStack = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack else { return }
+            let dataStack = AppDelegate.shared.coreDataStack
             let vcProvider = RootViewControllerProvider(dataStack: dataStack)
 
             guard let windowScene = (scene as? UIWindowScene) else { return }

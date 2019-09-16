@@ -3,6 +3,7 @@ import UIKit
 class ServerSetup {
     enum SetupError: String, Error {
         case imagePersistFailure = "Failed to persist stream image"
+        case playerInitializationError = "Failed to initialize the stream player"
     }
 
     // MARK: - Private properties
@@ -31,6 +32,12 @@ class ServerSetup {
                     return
                 }
                 self.updateStreamName()
+
+                guard self.initializePlayer() else {
+                    completion(SetupError.playerInitializationError)
+                    return
+                }
+
                 completion(nil)
             case .failure(let error):
                 completion(error)
@@ -57,5 +64,14 @@ class ServerSetup {
         let streamName = apiClient.streamName ?? "Unnamed JRK Stream"
         serverConfig.name = streamName
         dataStack.save()
+    }
+
+    private func initializePlayer() -> Bool {
+        guard let player = StreamPlayer(serverConfiguration: serverConfig, apiClient: apiClient) else {
+            return false
+        }
+
+        AppDelegate.shared.streamPlayer = player
+        return true
     }
 }
