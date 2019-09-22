@@ -17,6 +17,8 @@ class ApiClient {
         return networkClient.rootURL.appendingPathComponent(path)
     }
 
+    var streamPicture: UIImage?
+
     // MARK: - Private properties
 
     private let networkClient: NetworkClientProtocol
@@ -64,7 +66,7 @@ class ApiClient {
             return
         }
 
-        networkClient.get(path, resultHandler: { result in
+        networkClient.get(path, resultHandler: { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
@@ -72,6 +74,7 @@ class ApiClient {
                         completion(.failure(ApiError.decodingError))
                         return
                     }
+                    self?.streamPicture = image
                     completion(.success(image))
                 case .failure(let error):
                     completion(.failure(error))

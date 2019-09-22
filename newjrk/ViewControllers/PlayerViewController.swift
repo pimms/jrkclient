@@ -13,6 +13,7 @@ class PlayerViewController: UIViewController {
     @IBOutlet private var currentlyPlayingLabel: UILabel?
 
     private var isConfigured = false
+    private var apiClient: ApiClient!
     private var serverConfiguration: ServerConfiguration!
 
     // MARK: - Overrides
@@ -32,8 +33,9 @@ class PlayerViewController: UIViewController {
 
     // MARK: - Internal methods
 
-    func setup(withServerConfiguration config: ServerConfiguration) {
-        serverConfiguration = config
+    func setup(withServerConfiguration serverConfiguration: ServerConfiguration, apiClient: ApiClient) {
+        self.serverConfiguration = serverConfiguration
+        self.apiClient = apiClient
         isConfigured = true
     }
 }

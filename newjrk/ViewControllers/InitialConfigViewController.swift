@@ -24,6 +24,23 @@ class InitialConfigViewController: UIViewController {
         #endif
     }
 
+    @IBAction private func submitButtonTapped() {
+        attemptSubmit()
+    }
+
+    private func attemptSubmit() -> Bool {
+        let inputError = validateInput()
+
+        guard inputError == nil, let url = enteredURL() else {
+            displayError(inputError ?? .unknownError)
+            animateErrorLabel()
+            return false
+        }
+
+        submit(url: url)
+        return true
+    }
+
     private func submit(url: URL) {
         loadingView = LoadingView.show(in: self, withMessage: "Connecting...")
         urlField?.resignFirstResponder()
@@ -54,7 +71,7 @@ class InitialConfigViewController: UIViewController {
                     return
                 }
 
-                self?.handleSetupCompleted(serverConfig: serverConfig)
+                self?.handleSetupCompleted(serverConfig: serverConfig, apiClient: apiClient)
             }
         }
     }
@@ -65,7 +82,7 @@ class InitialConfigViewController: UIViewController {
         return serverConfig
     }
 
-    private func handleSetupCompleted(serverConfig: ServerConfiguration) {
+    private func handleSetupCompleted(serverConfig: ServerConfiguration, apiClient: ApiClient) {
         loadingView?.remove()
 
         guard
@@ -77,7 +94,7 @@ class InitialConfigViewController: UIViewController {
         dataStack.setPreferredServerConfiguration(serverConfig)
 
         let playerVc = UIStoryboard.instantiate(PlayerViewController.self)
-        playerVc.setup(withServerConfiguration: serverConfig)
+        playerVc.setup(withServerConfiguration: serverConfig, apiClient: apiClient)
         navigationController?.setViewControllers([playerVc], animated: true)
     }
 
@@ -91,16 +108,7 @@ class InitialConfigViewController: UIViewController {
 
 extension InitialConfigViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let inputError = validateInput()
-
-        guard inputError == nil, let url = enteredURL() else {
-            displayError(inputError ?? .unknownError)
-            animateErrorLabel()
-            return false
-        }
-
-        submit(url: url)
-        return true
+        return attemptSubmit()
     }
 }
 

@@ -21,6 +21,5 @@ class RoundedButton: UIButton {
 
     private func setup() {
         clipsToBounds = true
-        setTitle("Rounded Button", for: .normal)
     }
 }
