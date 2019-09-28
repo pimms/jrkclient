@@ -168,7 +168,7 @@
                     <connections>
                         <outlet property="currentlyPlayingLabel" destination="P14-wA-Vfb" id="zYa-Fn-lhS"/>
                         <outlet property="imageView" destination="fUX-CA-1gj" id="g0L-Ak-tPm"/>
-                        <outlet property="playbutton" destination="eM9-hG-q4d" id="tJv-Zm-Qiy"/>
+                        <outlet property="playButton" destination="eM9-hG-q4d" id="UFB-LF-3De"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZB1-zl-i7k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

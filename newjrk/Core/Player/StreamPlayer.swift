@@ -1,5 +1,9 @@
 import AVFoundation
 
+protocol StreamPlayerDelegate: AnyObject {
+    func streamPlayerChangedState(_ streamPlayer: StreamPlayer)
+}
+
 class StreamPlayer: NSObject {
 
     // MARK: - Internal properties
@@ -32,6 +36,7 @@ class StreamPlayer: NSObject {
     // MARK: - Private properties
 
     private lazy var log = Log(for: self)
+    private let delegates = DelegateCollection<StreamPlayerDelegate>()
     private let player: AVPlayer
     private let playerItem: AVPlayerItem
     private var isBuffering = false
@@ -56,16 +61,24 @@ class StreamPlayer: NSObject {
 
     func play() {
         player.play()
+        delegates.invoke { $0.streamPlayerChangedState(self) }
     }
 
     func pause() {
         player.pause()
+        delegates.invoke { $0.streamPlayerChangedState(self) }
+    }
+
+    func addDelegate(_ delegate: StreamPlayerDelegate) {
+        delegates.add(delegate)
     }
 
     // MARK: - Overrides
 
     override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change _: [NSKeyValueChangeKey : Any]?, context _: UnsafeMutableRawPointer?) {
         if object is AVPlayerItem {
+            var notifyDelegates = true
+
             switch keyPath {
             case "playbackBufferEmpty":
                 log.log("keyPath: playbackBufferEmpty")
@@ -77,8 +90,15 @@ class StreamPlayer: NSObject {
                 log.log("keyPath: playbackBufferFull")
                 isBuffering = false
             default:
+                notifyDelegates = false
                 break
+            }
+
+            if notifyDelegates {
+                delegates.invoke { $0.streamPlayerChangedState(self) }
             }
         }
     }
+
+    // MARK: - Private methods
 }

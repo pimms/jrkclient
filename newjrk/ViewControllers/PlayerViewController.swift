@@ -11,7 +11,7 @@ class PlayerViewController: UIViewController {
 
     @IBOutlet private var imageView: UIImageView?
     @IBOutlet private var currentlyPlayingLabel: UILabel?
-    @IBOutlet private var playbutton: UIButton?
+    @IBOutlet private var playButton: UIButton?
 
     private lazy var log = Log(for: self)
     private var isConfigured = false
@@ -36,6 +36,7 @@ class PlayerViewController: UIViewController {
 
     func setup(streamPlayer: StreamPlayer) {
         self.streamPlayer = streamPlayer
+        streamPlayer.addDelegate(self)
         isConfigured = true
     }
 
@@ -62,6 +63,28 @@ extension PlayerViewController {
         let serverConfig = streamPlayer.serverConfiguration
         if let path = serverConfig.picturePath, let data = try? Data(contentsOf: path), let image = UIImage(data: data) {
             imageView?.image = image
+        }
+    }
+}
+
+// MARK: - StreamPlayerDelegate
+
+extension PlayerViewController: StreamPlayerDelegate {
+    func streamPlayerChangedState(_ streamPlayer: StreamPlayer) {
+        let image = playerButtonImage(for: streamPlayer.state)
+        playButton?.setBackgroundImage(image, for: .normal)
+    }
+
+    private func playerButtonImage(for state: PlayerState) -> UIImage? {
+        switch state {
+        case .playing:
+            return UIImage(systemName: "stop.circle")
+        case .paused, .notPlaying:
+            return UIImage(systemName: "play.circle")
+        case .buffering:
+            return UIImage(systemName: "arrow.clockwise.circle")
+        case .failed:
+            return UIImage(systemName: "exclamationmark.circle")
         }
     }
 }
