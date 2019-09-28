@@ -4,16 +4,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        let isRunningTests = UserDefaults.standard.bool(forKey: "isRunningUnitTests")
-        if !isRunningTests {
-            guard let windowScene = (scene as? UIWindowScene) else { return }
-            window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-            window?.windowScene = windowScene
-            window?.rootViewController = UIStoryboard.instantiate(UINavigationController.self, withId: "RootController")
-            window?.makeKeyAndVisible()
-        }
-    }
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) { }
 
     func sceneDidDisconnect(_ scene: UIScene) { }
 

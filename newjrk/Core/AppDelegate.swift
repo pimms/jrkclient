@@ -46,7 +46,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - UIApplicationDelegate
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        attemptServerSetup()
+
+        let isRunningTests = UserDefaults.standard.bool(forKey: "isRunningUnitTests")
+        if !isRunningTests {
+            attemptServerSetup()
+        }
+
         return true
     }
 

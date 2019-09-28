@@ -6,7 +6,7 @@ class ApiClientTests: XCTestCase {
     private let networkClient = MockNetworkClient()
 
     func testCompletionHandlerGetsCalledOnSuccess() {
-        networkClient.expect(TestData.successfulRootDocumentResponse, forPath: "/")
+        networkClient.expect(TestData.rootDocumentResponse, forPath: "/")
 
         let expect = expectation(description: "init completion handler called")
         let _ = ApiClient(networkClient: networkClient) { error in
@@ -92,11 +92,31 @@ class ApiClientTests: XCTestCase {
         waitForExpectations(timeout: 1.0)
     }
 
+    func testNowPlayingSuccess() {
+        let client = createClient()
+        networkClient.expect(TestData.nowPlayingResponse, forPath: "/live/nowPlaying")
+
+        let expect = expectation(description: "nowPlaying completiong handler called")
+        client.fetchNowPlaying { result in
+            switch result {
+            case .failure:
+                XCTFail()
+            case .success(let nowPlaying):
+                XCTAssertEqual("2016", nowPlaying.season)
+                XCTAssertEqual("Mandag 19/12", nowPlaying.name)
+                XCTAssertEqual("20161219.mp3", nowPlaying.key)
+            }
+            expect.fulfill()
+        }
+
+        waitForExpectations(timeout: 1.0)
+    }
+
     // MARK: - Private methods
 
     private func createClient(mockSuccessfulResponse: Bool = true) -> ApiClient {
         if mockSuccessfulResponse {
-            networkClient.expect(TestData.successfulRootDocumentResponse, forPath: "/")
+            networkClient.expect(TestData.rootDocumentResponse, forPath: "/")
         }
 
         let expect = expectation(description: "init completion handler called")

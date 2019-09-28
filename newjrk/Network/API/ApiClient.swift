@@ -66,7 +66,7 @@ class ApiClient {
             return
         }
 
-        networkClient.get(path, resultHandler: { [weak self] result in
+        networkClient.get(path) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
@@ -80,6 +80,30 @@ class ApiClient {
                     completion(.failure(error))
                 }
             }
-        })
+        }
+    }
+
+    func fetchNowPlaying(completion: @escaping (Result<NowPlayingDTO,Error>) -> Void) {
+        guard let path = rootDocument?.nowPlaying else {
+            DispatchQueue.main.async {
+                completion(.failure(ApiError.noRootDocument))
+            }
+            return
+        }
+
+        networkClient.get(path) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    guard let nowPlaying = NowPlayingDTO.decoded(fromJson: data) else {
+                        completion(.failure(ApiError.decodingError))
+                        return
+                    }
+                    completion(.success(nowPlaying))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
     }
 }

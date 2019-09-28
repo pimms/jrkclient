@@ -13,7 +13,7 @@ class ServerSetupTests: XCTestCase {
         let expect = expectation(description: "ApiClient completion handler called")
 
         networkClient = MockNetworkClient()
-        networkClient.expect(TestData.successfulRootDocumentResponse, forPath: "/")
+        networkClient.expect(TestData.rootDocumentResponse, forPath: "/")
 
         apiClient = ApiClient(networkClient: networkClient) { error in
             XCTAssertNil(error)
