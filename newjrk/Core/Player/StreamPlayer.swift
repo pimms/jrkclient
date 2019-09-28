@@ -1,4 +1,5 @@
 import AVFoundation
+import MediaPlayer
 
 protocol StreamPlayerDelegate: AnyObject {
     func streamPlayerChangedState(_ streamPlayer: StreamPlayer)
@@ -52,6 +53,9 @@ class StreamPlayer: NSObject {
         player = AVPlayer(playerItem: playerItem)
         super.init()
 
+        initializeAudioSession()
+        initializeRemoteCommandCenter()
+
         playerItem.addObserver(self, forKeyPath: "playbackBufferEmpty", options: .new, context: nil)
         playerItem.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options: .new, context: nil)
         playerItem.addObserver(self, forKeyPath: "playbackBufferFull", options: .new, context: nil)
@@ -101,4 +105,31 @@ class StreamPlayer: NSObject {
     }
 
     // MARK: - Private methods
+
+    private func initializeAudioSession() {
+        let audioSession = AVAudioSession.sharedInstance()
+        try? audioSession.setCategory(.playback)
+        try? audioSession.setMode(.spokenAudio)
+    }
+
+    private func initializeRemoteCommandCenter() {
+        let commandCenter = MPRemoteCommandCenter.shared()
+
+        commandCenter.previousTrackCommand.isEnabled = false
+        commandCenter.nextTrackCommand.isEnabled = false
+        commandCenter.skipForwardCommand.isEnabled = false
+        commandCenter.skipBackwardCommand.isEnabled = false
+        commandCenter.playCommand.isEnabled = true
+        commandCenter.pauseCommand.isEnabled = true
+
+        commandCenter.playCommand.addTarget { [weak self] _ in
+            self?.play()
+            return .success
+        }
+
+        commandCenter.pauseCommand.addTarget { [weak self] _ in
+            self?.pause()
+            return .success
+        }
+    }
 }
