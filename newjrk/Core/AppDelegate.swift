@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private lazy var log = Log(for: self)
     private var streamSetupState: StreamSetupState = .notStarted
-    private var streamSetupDelegates: [WeakRef<StreamSetupDelegate>] = []
+    private let delegates = DelegateCollection<StreamSetupDelegate>()
 
     // MARK: - UIApplicationDelegate
 
@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate {
     func addStreamSetupDelegate(_ delegate: StreamSetupDelegate) {
-        streamSetupDelegates.append(WeakRef(delegate as AnyObject))
+        delegates.add(delegate)
         notifyStreamSetupDelegate(delegate)
     }
 
@@ -97,9 +97,7 @@ extension AppDelegate {
     }
 
     private func notifyStreamSetupDelegates() {
-        streamSetupDelegates.forEach { delegate in
-            self.notifyStreamSetupDelegate(delegate.value)
-        }
+        delegates.invoke { self.notifyStreamSetupDelegate($0) }
     }
 
     private func notifyStreamSetupDelegate(_ delegate: StreamSetupDelegate?) {
