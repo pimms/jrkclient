@@ -33,6 +33,7 @@ class StreamPlayer: NSObject {
 
     let serverConfiguration: ServerConfiguration
     let apiClient: ApiClient
+    var streamPicture: UIImage?
 
     // MARK: - Private properties
 
@@ -53,6 +54,10 @@ class StreamPlayer: NSObject {
         player = AVPlayer(playerItem: playerItem)
         super.init()
 
+        if let path = serverConfiguration.picturePath, let data = try? Data(contentsOf: path) {
+            streamPicture = UIImage(data: data)
+        }
+
         initializeAudioSession()
         initializeRemoteCommandCenter()
 
@@ -65,6 +70,7 @@ class StreamPlayer: NSObject {
 
     func play() {
         player.play()
+        updateNowPlayingProperties()
         delegates.invoke { $0.streamPlayerChangedState(self) }
     }
 
@@ -131,5 +137,20 @@ class StreamPlayer: NSObject {
             self?.pause()
             return .success
         }
+    }
+
+    private func updateNowPlayingProperties() {
+        var nowPlayingInfo: [String : Any] = [
+            MPMediaItemPropertyArtist: apiClient.streamName ?? "JRK",
+            MPMediaItemPropertyTitle: "Episodenavn?",
+        ]
+
+        if let streamPicture = streamPicture {
+            let bounds = streamPicture.size
+            let artwork = MPMediaItemArtwork(boundsSize: bounds, requestHandler: { _ in streamPicture })
+            nowPlayingInfo[MPMediaItemPropertyArtwork] = artwork
+        }
+
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
     }
 }
