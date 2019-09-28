@@ -11,10 +11,10 @@ class PlayerViewController: UIViewController {
 
     @IBOutlet private var imageView: UIImageView?
     @IBOutlet private var currentlyPlayingLabel: UILabel?
+    @IBOutlet private var playbutton: UIButton?
 
     private var isConfigured = false
-    private var apiClient: ApiClient!
-    private var serverConfiguration: ServerConfiguration!
+    private var streamPlayer: StreamPlayer!
 
     // MARK: - Overrides
 
@@ -33,10 +33,15 @@ class PlayerViewController: UIViewController {
 
     // MARK: - Internal methods
 
-    func setup(withServerConfiguration serverConfiguration: ServerConfiguration, apiClient: ApiClient) {
-        self.serverConfiguration = serverConfiguration
-        self.apiClient = apiClient
+    func setup(streamPlayer: StreamPlayer) {
+        self.streamPlayer = streamPlayer
         isConfigured = true
+    }
+
+    // MARK: - IBActions
+
+    @IBAction private func playButtonTapped() {
+
     }
 }
 
@@ -44,7 +49,8 @@ class PlayerViewController: UIViewController {
 
 extension PlayerViewController {
     private func setupStreamPicture() {
-        if let path = serverConfiguration.picturePath, let data = try? Data(contentsOf: path), let image = UIImage(data: data) {
+        let serverConfig = streamPlayer.serverConfiguration
+        if let path = serverConfig.picturePath, let data = try? Data(contentsOf: path), let image = UIImage(data: data) {
             imageView?.image = image
         }
     }

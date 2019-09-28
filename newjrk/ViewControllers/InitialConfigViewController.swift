@@ -25,7 +25,7 @@ class InitialConfigViewController: UIViewController {
     }
 
     @IBAction private func submitButtonTapped() {
-        attemptSubmit()
+        _ = attemptSubmit()
     }
 
     private func attemptSubmit() -> Bool {
@@ -86,15 +86,14 @@ class InitialConfigViewController: UIViewController {
         loadingView?.remove()
 
         guard
-            serverConfig.name != nil,
-            serverConfig.url != nil,
+            let player = AppDelegate.shared.streamPlayer,
             dataStack.save()
         else { return }
 
         dataStack.setPreferredServerConfiguration(serverConfig)
 
         let playerVc = UIStoryboard.instantiate(PlayerViewController.self)
-        playerVc.setup(withServerConfiguration: serverConfig, apiClient: apiClient)
+        playerVc.setup(streamPlayer: player)
         navigationController?.setViewControllers([playerVc], animated: true)
     }
 

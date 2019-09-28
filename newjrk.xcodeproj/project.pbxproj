@@ -12,6 +12,7 @@
 		19176D4023297E8400D05187 /* String+stableHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19176D3F23297E8400D05187 /* String+stableHash.swift */; };
 		19176D42232AC1F400D05187 /* GradientBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19176D41232AC1F400D05187 /* GradientBlurView.swift */; };
 		19176D44232ACA1200D05187 /* UIView+fillInSuperview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19176D43232ACA1200D05187 /* UIView+fillInSuperview.swift */; };
+		192C340E233F45450069ACE5 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192C340D233F45450069ACE5 /* Log.swift */; };
 		1941365C2323A04E0087BCC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1941365B2323A04E0087BCC6 /* AppDelegate.swift */; };
 		1941365E2323A04E0087BCC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1941365D2323A04E0087BCC6 /* SceneDelegate.swift */; };
 		194136632323A04E0087BCC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 194136612323A04E0087BCC6 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 		194136682323A0500087BCC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 194136672323A0500087BCC6 /* Assets.xcassets */; };
 		1941366B2323A0500087BCC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 194136692323A0500087BCC6 /* LaunchScreen.storyboard */; };
 		194136812323A0510087BCC6 /* newjrkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194136802323A0510087BCC6 /* newjrkUITests.swift */; };
+		194C427B233D364C00ADB910 /* WeakRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194C427A233D364C00ADB910 /* WeakRef.swift */; };
 		195F2EDE232FE6A500AF84A1 /* StreamPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195F2EDD232FE6A500AF84A1 /* StreamPlayer.swift */; };
 		195F2EE1232FED0200AF84A1 /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195F2EE0232FED0200AF84A1 /* PlayerState.swift */; };
 		1960BEB12323D2B300BE4151 /* NSManagedObject+URIRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960BEB02323D2B300BE4151 /* NSManagedObject+URIRepresentation.swift */; };
@@ -73,6 +75,7 @@
 		19176D3F23297E8400D05187 /* String+stableHash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+stableHash.swift"; sourceTree = "<group>"; };
 		19176D41232AC1F400D05187 /* GradientBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBlurView.swift; sourceTree = "<group>"; };
 		19176D43232ACA1200D05187 /* UIView+fillInSuperview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+fillInSuperview.swift"; sourceTree = "<group>"; };
+		192C340D233F45450069ACE5 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		194136582323A04E0087BCC6 /* newjrk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = newjrk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1941365B2323A04E0087BCC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1941365D2323A04E0087BCC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +89,7 @@
 		1941367C2323A0510087BCC6 /* newjrkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = newjrkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		194136802323A0510087BCC6 /* newjrkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newjrkUITests.swift; sourceTree = "<group>"; };
 		194136822323A0510087BCC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		194C427A233D364C00ADB910 /* WeakRef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRef.swift; sourceTree = "<group>"; };
 		195F2EDD232FE6A500AF84A1 /* StreamPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamPlayer.swift; sourceTree = "<group>"; };
 		195F2EE0232FED0200AF84A1 /* PlayerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
 		1960BEB02323D2B300BE4151 /* NSManagedObject+URIRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+URIRepresentation.swift"; sourceTree = "<group>"; };
@@ -145,6 +149,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		192C340C233F45370069ACE5 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				194C427A233D364C00ADB910 /* WeakRef.swift */,
+				192C340D233F45450069ACE5 /* Log.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		1941364F2323A04E0087BCC6 = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +182,7 @@
 		1941365A2323A04E0087BCC6 /* newjrk */ = {
 			isa = PBXGroup;
 			children = (
+				192C340C233F45370069ACE5 /* Util */,
 				1960BEB32323D7D400BE4151 /* Core */,
 				1960BEAF2323D2A100BE4151 /* Extensions */,
 				19F87DEC2323B166008473C3 /* Model */,
@@ -510,6 +524,7 @@
 			files = (
 				19176D42232AC1F400D05187 /* GradientBlurView.swift in Sources */,
 				1960BEC223242EBC00BE4151 /* ApiClient.swift in Sources */,
+				192C340E233F45450069ACE5 /* Log.swift in Sources */,
 				19CBF10C23254B5F0087D305 /* ServerConfiguration+picturePath.swift in Sources */,
 				19A6E7F5232949D400CEC94D /* UIAlertController+displayError.swift in Sources */,
 				194136662323A04E0087BCC6 /* newjrk.xcdatamodeld in Sources */,
@@ -521,6 +536,7 @@
 				19176D4023297E8400D05187 /* String+stableHash.swift in Sources */,
 				19EC2A23233788AA00DC30C0 /* LoadingViewController.swift in Sources */,
 				19176D3E2329767100D05187 /* UIStoryboard+instantiate.swift in Sources */,
+				194C427B233D364C00ADB910 /* WeakRef.swift in Sources */,
 				1960BEC02323FF7600BE4151 /* RootDTO.swift in Sources */,
 				1941365E2323A04E0087BCC6 /* SceneDelegate.swift in Sources */,
 				1960BEC6232433B500BE4151 /* NetworkClientProtocol.swift in Sources */,

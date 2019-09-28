@@ -108,7 +108,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testImage" translatesAutoresizingMaskIntoConstraints="NO" id="fUX-CA-1gj">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fUX-CA-1gj">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="626"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zru-YK-w0l">
@@ -122,6 +122,9 @@
                                         </constraints>
                                         <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <state key="normal" backgroundImage="play.circle" catalog="system"/>
+                                        <connections>
+                                            <action selector="playButtonTapped" destination="Uyh-B5-MVW" eventType="touchUpInside" id="Rfp-S4-ceJ"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P14-wA-Vfb">
                                         <rect key="frame" x="8" y="41" width="398" height="28"/>
@@ -142,14 +145,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l9C-et-moj" customClass="GradientBlurView" customModule="newjrk" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="575" width="414" height="102"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="blurHeight">
-                                        <real key="value" value="100"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="customColor">
-                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -173,6 +168,7 @@
                     <connections>
                         <outlet property="currentlyPlayingLabel" destination="P14-wA-Vfb" id="zYa-Fn-lhS"/>
                         <outlet property="imageView" destination="fUX-CA-1gj" id="g0L-Ak-tPm"/>
+                        <outlet property="playbutton" destination="eM9-hG-q4d" id="tJv-Zm-Qiy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZB1-zl-i7k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -198,7 +194,6 @@
         <!--Loading View Controller-->
         <scene sceneID="RVA-Ri-vPj">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OmF-Bj-OVs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="LoadingViewController" id="Pb5-vS-qyF" customClass="LoadingViewController" customModule="newjrk" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6fh-cj-MXu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -220,12 +215,12 @@
                         <outlet property="activityIndicator" destination="SQS-HN-BCG" id="ew9-aN-P8m"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OmF-Bj-OVs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1196" y="208"/>
         </scene>
     </scenes>
     <resources>
         <image name="play.circle" catalog="system" width="64" height="62"/>
-        <image name="testImage" width="86" height="82"/>
     </resources>
 </document>

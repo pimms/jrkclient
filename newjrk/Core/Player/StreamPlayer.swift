@@ -26,13 +26,13 @@ class StreamPlayer: NSObject {
         return apiClient.streamName ?? "Unnamed Stream"
     }
 
+    let serverConfiguration: ServerConfiguration
+    let apiClient: ApiClient
+
     // MARK: - Private properties
 
-    private let serverConfiguration: ServerConfiguration
-    private let apiClient: ApiClient
     private let player: AVPlayer
     private let playerItem: AVPlayerItem
-
     private var isBuffering = false
 
     // MARK: - Init

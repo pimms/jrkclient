@@ -16,40 +16,19 @@ class LoadingViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        attemptConnection()
+        AppDelegate.shared.addStreamSetupDelegate(self)
     }
 
     // MARK: - Private methods
-
-    private func attemptConnection() {
-        let dataStack = AppDelegate.shared.coreDataStack
-        if  let preferredConfiguration = dataStack.preferredServerConfiguration(),
-            let networkClient = setupNetworkClient(withConfiguration: preferredConfiguration)
-        {
-            activityIndicator?.startAnimating()
-            UIView.animate(withDuration: 0.2) { self.activityIndicator?.alpha = 1 }
-
-            let apiClient = ApiClient(networkClient: networkClient)
-            apiClient.loadRootDocument { [weak self] error in
-                if let error = error {
-                    self?.handleCriticalError(error)
-                } else {
-                    self?.presentPlayerViewController(withServerConfiguration: preferredConfiguration, apiClient: apiClient)
-                }
-            }
-        } else {
-            presentInitialConfiguration()
-        }
-    }
 
     private func presentInitialConfiguration() {
         let vc = UIStoryboard.instantiate(InitialConfigViewController.self)
         present(vc)
     }
 
-    private func presentPlayerViewController(withServerConfiguration serverConfiguration: ServerConfiguration, apiClient: ApiClient) {
+    private func presentPlayerViewController(streamPlayer: StreamPlayer) {
         let vc = UIStoryboard.instantiate(PlayerViewController.self)
-        vc.setup(withServerConfiguration: serverConfiguration, apiClient: apiClient)
+        vc.setup(streamPlayer: streamPlayer)
         present(vc)
     }
 
@@ -60,21 +39,14 @@ class LoadingViewController: UIViewController {
         navigationController?.view.layer.add(transition, forKey: nil)
         navigationController?.pushViewController(vc, animated: false)
     }
+}
 
-
-    private func setupNetworkClient(withConfiguration config: ServerConfiguration) -> NetworkClientProtocol? {
-        guard let rootUrl = config.url else {
-            self.handleCriticalError(LoadingError.rootUrlMissing)
-            return nil
-        }
-
-        return NetworkClient(rootURL: rootUrl)
+extension LoadingViewController: StreamSetupDelegate {
+    func streamSetupCompleted(_ streamPlayer: StreamPlayer) {
+        presentPlayerViewController(streamPlayer: streamPlayer)
     }
 
-
-    private func handleCriticalError(_ error: Error?) {
-        UIAlertController.display(error: error, withTitle: "Critical Error", message: "Unable to load stream.", in: self) { [weak self] in
-            self?.attemptConnection()
-        }
+    func streamSetupFailed() {
+        presentInitialConfiguration()
     }
 }
