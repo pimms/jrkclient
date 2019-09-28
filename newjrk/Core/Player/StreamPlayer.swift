@@ -31,6 +31,7 @@ class StreamPlayer: NSObject {
 
     // MARK: - Private properties
 
+    private lazy var log = Log(for: self)
     private let player: AVPlayer
     private let playerItem: AVPlayerItem
     private var isBuffering = false
@@ -67,13 +68,13 @@ class StreamPlayer: NSObject {
         if object is AVPlayerItem {
             switch keyPath {
             case "playbackBufferEmpty":
-                print("keyPath: playbackBufferEmpty")
+                log.log("keyPath: playbackBufferEmpty")
                 isBuffering = true
             case "playbackLikelyToKeepUp":
-                print("keyPath: playbackLikelyToKeepUp")
+                log.log("keyPath: playbackLikelyToKeepUp")
                 isBuffering = false
             case "playbackBufferFull":
-                print("keyPath: playbackBufferFull")
+                log.log("keyPath: playbackBufferFull")
                 isBuffering = false
             default:
                 break

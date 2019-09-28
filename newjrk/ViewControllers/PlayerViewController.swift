@@ -13,6 +13,7 @@ class PlayerViewController: UIViewController {
     @IBOutlet private var currentlyPlayingLabel: UILabel?
     @IBOutlet private var playbutton: UIButton?
 
+    private lazy var log = Log(for: self)
     private var isConfigured = false
     private var streamPlayer: StreamPlayer!
 
@@ -41,7 +42,16 @@ class PlayerViewController: UIViewController {
     // MARK: - IBActions
 
     @IBAction private func playButtonTapped() {
-
+        switch streamPlayer.state {
+        case .playing:
+            log.log("Pausing")
+            streamPlayer.pause()
+        case .paused, .notPlaying, .failed:
+            log.log("Playing")
+            streamPlayer.play()
+        default:
+            log.log("Nothing to do for PlayerState '\(streamPlayer.state)'")
+        }
     }
 }
 
