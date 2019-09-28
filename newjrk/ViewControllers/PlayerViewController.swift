@@ -37,6 +37,7 @@ class PlayerViewController: UIViewController {
     func setup(streamPlayer: StreamPlayer) {
         self.streamPlayer = streamPlayer
         streamPlayer.addDelegate(self)
+        currentlyPlayingLabel?.text = nil
         isConfigured = true
     }
 
@@ -73,6 +74,7 @@ extension PlayerViewController: StreamPlayerDelegate {
     func streamPlayerChangedState(_ streamPlayer: StreamPlayer) {
         let image = playerButtonImage(for: streamPlayer.state)
         playButton?.setBackgroundImage(image, for: .normal)
+        currentlyPlayingLabel?.text = streamPlayer.episodeTitle
     }
 
     private func playerButtonImage(for state: PlayerState) -> UIImage? {

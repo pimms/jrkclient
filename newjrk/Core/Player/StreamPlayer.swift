@@ -31,9 +31,17 @@ class StreamPlayer: NSObject {
         return apiClient.streamName ?? "Unnamed Stream"
     }
 
+    var episodeTitle: String {
+        if let nowPlaying = nowPlaying {
+            return "\(nowPlaying.name) \(nowPlaying.season)"
+        }
+        return "Unknown"
+    }
+
     let serverConfiguration: ServerConfiguration
     let apiClient: ApiClient
-    var streamPicture: UIImage?
+    private(set) var streamPicture: UIImage?
+    private(set) var nowPlaying: NowPlayingDTO?
 
     // MARK: - Private properties
 
@@ -60,6 +68,7 @@ class StreamPlayer: NSObject {
 
         initializeAudioSession()
         initializeRemoteCommandCenter()
+        refreshNowPlayingData()
 
         playerItem.addObserver(self, forKeyPath: "playbackBufferEmpty", options: .new, context: nil)
         playerItem.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options: .new, context: nil)
@@ -139,10 +148,28 @@ class StreamPlayer: NSObject {
         }
     }
 
+    private func refreshNowPlayingData() {
+        apiClient.fetchNowPlaying { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let nowPlaying):
+                let different = self.nowPlaying != nowPlaying
+                self.nowPlaying = nowPlaying
+                self.updateNowPlayingProperties()
+
+                if different {
+                    self.delegates.invoke { $0.streamPlayerChangedState(self) }
+                }
+            case .failure(let error):
+                self.log.log(.error, "Failed to fetch Now Playing data: \(error)")
+            }
+        }
+    }
+
     private func updateNowPlayingProperties() {
         var nowPlayingInfo: [String : Any] = [
             MPMediaItemPropertyArtist: apiClient.streamName ?? "JRK",
-            MPMediaItemPropertyTitle: "Episodenavn?",
+            MPMediaItemPropertyTitle: episodeTitle,
         ]
 
         if let streamPicture = streamPicture {
