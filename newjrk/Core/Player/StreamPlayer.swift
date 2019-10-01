@@ -170,6 +170,7 @@ class StreamPlayer: NSObject {
         var nowPlayingInfo: [String : Any] = [
             MPMediaItemPropertyArtist: apiClient.streamName ?? "JRK",
             MPMediaItemPropertyTitle: episodeTitle,
+            MPNowPlayingInfoPropertyIsLiveStream: true,
         ]
 
         if let streamPicture = streamPicture {
