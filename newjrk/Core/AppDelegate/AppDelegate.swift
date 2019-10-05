@@ -63,11 +63,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate {
-    func addStreamSetupDelegate(_ delegate: StreamSetupDelegate) {
-        delegates.add(delegate)
-        notifyStreamSetupDelegate(delegate)
-    }
-
     private func attemptServerSetup() {
         log.log("Attempting to connect to existing server configuration")
         if  let preferredConfiguration = coreDataStack.preferredServerConfiguration(),
@@ -99,6 +94,13 @@ extension AppDelegate {
         }
 
         return NetworkClient(rootURL: rootUrl)
+    }
+}
+
+extension AppDelegate {
+    func addStreamSetupDelegate(_ delegate: StreamSetupDelegate) {
+        delegates.add(delegate)
+        notifyStreamSetupDelegate(delegate)
     }
 
     private func notifyStreamSetupDelegates() {

@@ -249,9 +249,8 @@
 		1960BEB32323D7D400BE4151 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				19E812EA23489667002C6A47 /* AppDelegate */,
 				195F2EDF232FECF600AF84A1 /* Player */,
-				1941365D2323A04E0087BCC6 /* SceneDelegate.swift */,
-				1941365B2323A04E0087BCC6 /* AppDelegate.swift */,
 				19CBF10423252F330087D305 /* ServerSetup.swift */,
 			);
 			path = Core;
@@ -346,6 +345,15 @@
 				19CBF110232554080087D305 /* LoadingView.swift */,
 			);
 			path = LoadingView;
+			sourceTree = "<group>";
+		};
+		19E812EA23489667002C6A47 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				1941365D2323A04E0087BCC6 /* SceneDelegate.swift */,
+				1941365B2323A04E0087BCC6 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
 			sourceTree = "<group>";
 		};
 		19F87DE32323A3F7008473C3 /* ViewControllers */ = {
