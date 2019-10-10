@@ -14,6 +14,7 @@ class ServerSetupTests: XCTestCase {
 
         networkClient = MockNetworkClient()
         networkClient.expect(TestData.rootDocumentResponse, forPath: "/")
+        networkClient.expect(TestData.nowPlayingResponse, forPath: "/live/nowPlaying")
 
         apiClient = ApiClient(networkClient: networkClient) { error in
             XCTAssertNil(error)
