@@ -106,4 +106,36 @@ class ApiClient {
             }
         }
     }
+
+    func fetchEpisodeLog(completion: @escaping (Result<[LogEntryDTO],Error>) -> Void) {
+        fetchLogs(from: rootDocument?.episodeLog, completion: completion)
+    }
+
+    func fetchEventLog(completion: @escaping (Result<[LogEntryDTO],Error>) -> Void) {
+        fetchLogs(from: rootDocument?.eventLog, completion: completion)
+    }
+
+    private func fetchLogs(from path: String?, completion: @escaping (Result<[LogEntryDTO],Error>) -> Void) {
+        guard let path = path else {
+            DispatchQueue.main.async {
+                completion(.failure(ApiError.noRootDocument))
+            }
+            return
+        }
+
+        networkClient.get(path) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    guard let logs = LogEntryDTO.decodedArray(fromJson: data) else {
+                        completion(.failure(ApiError.decodingError))
+                        return
+                    }
+                    completion(.success(logs))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
 }

@@ -96,7 +96,7 @@ class ApiClientTests: XCTestCase {
         let client = createClient()
         networkClient.expect(TestData.nowPlayingResponse, forPath: "/live/nowPlaying")
 
-        let expect = expectation(description: "nowPlaying completiong handler called")
+        let expect = expectation(description: "nowPlaying completion handler called")
         client.fetchNowPlaying { result in
             switch result {
             case .failure:
@@ -105,6 +105,52 @@ class ApiClientTests: XCTestCase {
                 XCTAssertEqual("2016", nowPlaying.season)
                 XCTAssertEqual("Mandag 19/12", nowPlaying.name)
                 XCTAssertEqual("20161219.mp3", nowPlaying.key)
+            }
+            expect.fulfill()
+        }
+
+        waitForExpectations(timeout: 1.0)
+    }
+
+    func testEpisodeLogSuccess() {
+        let client = createClient()
+        networkClient.expect(TestData.episodeLogResponse, forPath: "/logs/episodes")
+
+        let expect = expectation(description: "completion handler called")
+        client.fetchEpisodeLog { result in
+            switch result {
+            case .failure:
+                XCTFail()
+            case .success(let logs):
+                XCTAssertEqual(2, logs.count)
+                XCTAssertEqual("2012", logs[0].description)
+                XCTAssertEqual("Torsdag 16/2", logs[0].title)
+                XCTAssertEqual("2013", logs[1].description)
+                XCTAssertEqual("Torsdag 19/2", logs[1].title)
+            }
+            expect.fulfill()
+        }
+
+        waitForExpectations(timeout: 1.0)
+    }
+
+    func testEventLogSuccess() {
+        let client = createClient()
+        networkClient.expect(TestData.eventLogResponse, forPath: "/logs/events")
+
+        let expect = expectation(description: "completion handler called")
+        client.fetchEventLog { result in
+            switch result {
+            case .failure:
+                XCTFail()
+            case .success(let logs):
+                XCTAssertEqual(3, logs.count)
+                XCTAssertEqual(logs[0].description, nil)
+                XCTAssertEqual(logs[0].title, "Server started")
+                XCTAssertEqual(logs[1].title, "Download started")
+                XCTAssertEqual(logs[1].description, "S3-key '20120216.mp3'")
+                XCTAssertEqual(logs[2].title, "Segmentation started")
+                XCTAssertEqual(logs[2].description, "S3-key '20120216.mp3'")
             }
             expect.fulfill()
         }

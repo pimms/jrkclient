@@ -37,6 +37,8 @@
 		19A6E7F3232948DF00CEC94D /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A6E7F2232948DF00CEC94D /* PlayerViewController.swift */; };
 		19A6E7F5232949D400CEC94D /* UIAlertController+displayError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A6E7F4232949D400CEC94D /* UIAlertController+displayError.swift */; };
 		19B3444F232E672C0006CB9C /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B3444E232E672C0006CB9C /* RoundedButton.swift */; };
+		19B90E48234F9888004B4B40 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B90E47234F9888004B4B40 /* LogViewController.swift */; };
+		19B90E4A234FA85D004B4B40 /* LogEntryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B90E49234FA85D004B4B40 /* LogEntryDTO.swift */; };
 		19C7613E233F6D0D00313DA0 /* NowPlayingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C7613D233F6D0D00313DA0 /* NowPlayingDTO.swift */; };
 		19CBF0FF232436F70087D305 /* MockNetworkClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CBF0FE232436F70087D305 /* MockNetworkClientTests.swift */; };
 		19CBF10223243CC20087D305 /* TestAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19CBF10123243CC20087D305 /* TestAssets.xcassets */; };
@@ -109,6 +111,8 @@
 		19A6E7F2232948DF00CEC94D /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		19A6E7F4232949D400CEC94D /* UIAlertController+displayError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+displayError.swift"; sourceTree = "<group>"; };
 		19B3444E232E672C0006CB9C /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		19B90E47234F9888004B4B40 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
+		19B90E49234FA85D004B4B40 /* LogEntryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntryDTO.swift; sourceTree = "<group>"; };
 		19C7613D233F6D0D00313DA0 /* NowPlayingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingDTO.swift; sourceTree = "<group>"; };
 		19CBF0FE232436F70087D305 /* MockNetworkClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkClientTests.swift; sourceTree = "<group>"; };
 		19CBF10123243CC20087D305 /* TestAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestAssets.xcassets; sourceTree = "<group>"; };
@@ -285,6 +289,7 @@
 				1960BEC123242EBC00BE4151 /* ApiClient.swift */,
 				1960BEBF2323FF7600BE4151 /* RootDTO.swift */,
 				19C7613D233F6D0D00313DA0 /* NowPlayingDTO.swift */,
+				19B90E49234FA85D004B4B40 /* LogEntryDTO.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -365,6 +370,7 @@
 				1960BEB92323DD7800BE4151 /* InitialConfigViewController.swift */,
 				19A6E7F2232948DF00CEC94D /* PlayerViewController.swift */,
 				19EC2A22233788AA00DC30C0 /* LoadingViewController.swift */,
+				19B90E47234F9888004B4B40 /* LogViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -539,6 +545,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19B90E4A234FA85D004B4B40 /* LogEntryDTO.swift in Sources */,
 				19176D42232AC1F400D05187 /* GradientBlurView.swift in Sources */,
 				1960BEC223242EBC00BE4151 /* ApiClient.swift in Sources */,
 				19E812EC23489697002C6A47 /* URLValidator.swift in Sources */,
@@ -559,6 +566,7 @@
 				194C427B233D364C00ADB910 /* WeakRef.swift in Sources */,
 				1960BEC02323FF7600BE4151 /* RootDTO.swift in Sources */,
 				1941365E2323A04E0087BCC6 /* SceneDelegate.swift in Sources */,
+				19B90E48234F9888004B4B40 /* LogViewController.swift in Sources */,
 				1960BEC6232433B500BE4151 /* NetworkClientProtocol.swift in Sources */,
 				19A6E7F3232948DF00CEC94D /* PlayerViewController.swift in Sources */,
 				19F87DEE2323B172008473C3 /* CoreDataStack.swift in Sources */,
