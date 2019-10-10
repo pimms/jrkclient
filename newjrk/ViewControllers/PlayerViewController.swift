@@ -32,6 +32,15 @@ class PlayerViewController: UIViewController {
         super.viewDidAppear(animated)
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "log" {
+            if  let navController = segue.destination as? UINavigationController,
+                let logController = navController.viewControllers.first as? LogViewController {
+                logController.apiClient = streamPlayer.apiClient
+            }
+        }
+    }
+
     // MARK: - Internal methods
 
     func setup(streamPlayer: StreamPlayer) {
