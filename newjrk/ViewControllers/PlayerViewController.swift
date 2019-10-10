@@ -89,7 +89,7 @@ extension PlayerViewController: StreamPlayerDelegate {
     private func playerButtonImage(for state: PlayerState) -> UIImage? {
         switch state {
         case .playing:
-            return UIImage(systemName: "stop.circle")
+            return UIImage(systemName: "pause.circle")
         case .paused, .notPlaying:
             return UIImage(systemName: "play.circle")
         case .buffering:
