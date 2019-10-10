@@ -6,6 +6,7 @@ class InitialConfigViewController: UIViewController {
         case coreDataFailure = "Failed to get a handle to the Core Data stack."
         case serverConfigCreationError = "Failed to create a ServerConfiguration instance."
         case serverSetupError = "Failed to perform initial server setup."
+        case unknownError = "Uknown error"
         case notImplementedYet = "TODO!"
     }
 
@@ -29,16 +30,17 @@ class InitialConfigViewController: UIViewController {
     }
 
     private func attemptSubmit() -> Bool {
-        let inputError = validateInput()
+        let convertResult = URLValidator.convertToURL(urlField?.text)
 
-        guard inputError == nil, let url = enteredURL() else {
-            displayError(inputError ?? .unknownError)
+        switch convertResult {
+        case .failure(let err):
+            displayError(err)
             animateErrorLabel()
             return false
+        case .success(let url):
+            submit(url: url)
+            return true
         }
-
-        submit(url: url)
-        return true
     }
 
     private func submit(url: URL) {
@@ -114,39 +116,9 @@ extension InitialConfigViewController: UITextFieldDelegate {
 // MARK: - Input validation
 
 extension InitialConfigViewController {
-    private enum InputError: String, Error {
-        case noInput = "Enter a JRK URL"
-        case invalidScheme = "Only HTTPS scheme is supported"
-        case invalidURL = "Invalid URL"
-        case unknownError = "Unknown error"
-    }
-
-    private func validateInput() -> InputError? {
-        guard let text = urlField?.text else { return .noInput }
-        guard text.count > 0 else { return .noInput }
-        guard let url = URL(string: text) else { return .invalidURL }
-
-        if let scheme = url.scheme {
-            guard scheme.lowercased() == "https" else { return .invalidScheme }
-        }
-
-        return nil
-    }
-
-    private func enteredURL() -> URL? {
-        guard let text = urlField?.text, let url = URL(string: text) else {
-            return nil
-        }
-
-        if url.scheme == nil {
-            return URL(string: "https://\(url.absoluteString)")
-        }
-
-        return url
-    }
-
-    private func displayError(_ error: InputError) {
-        errorLabel?.text = error.rawValue
+    private func displayError(_ error: Error) {
+        let error = (error as? String) ?? ConfigError.unknownError.rawValue
+        errorLabel?.text = error
         view.layoutIfNeeded()
     }
 

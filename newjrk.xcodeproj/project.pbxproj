@@ -46,6 +46,7 @@
 		19CBF10C23254B5F0087D305 /* ServerConfiguration+picturePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CBF10B23254B5F0087D305 /* ServerConfiguration+picturePath.swift */; };
 		19CBF10F232553000087D305 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19CBF10E232553000087D305 /* LoadingView.xib */; };
 		19CBF111232554080087D305 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CBF110232554080087D305 /* LoadingView.swift */; };
+		19E812EC23489697002C6A47 /* URLValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E812EB23489697002C6A47 /* URLValidator.swift */; };
 		19EC2A23233788AA00DC30C0 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EC2A22233788AA00DC30C0 /* LoadingViewController.swift */; };
 		19F87DE72323AED3008473C3 /* TestDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F87DE62323AED3008473C3 /* TestDataStack.swift */; };
 		19F87DEB2323AFCF008473C3 /* CoreDataStackProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F87DEA2323AFCF008473C3 /* CoreDataStackProtocolTests.swift */; };
@@ -117,6 +118,7 @@
 		19CBF10B23254B5F0087D305 /* ServerConfiguration+picturePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServerConfiguration+picturePath.swift"; sourceTree = "<group>"; };
 		19CBF10E232553000087D305 /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		19CBF110232554080087D305 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		19E812EB23489697002C6A47 /* URLValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLValidator.swift; sourceTree = "<group>"; };
 		19EC2A22233788AA00DC30C0 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		19F87DE62323AED3008473C3 /* TestDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataStack.swift; sourceTree = "<group>"; };
 		19F87DEA2323AFCF008473C3 /* CoreDataStackProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStackProtocolTests.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				19E812EA23489667002C6A47 /* AppDelegate */,
 				195F2EDF232FECF600AF84A1 /* Player */,
 				19CBF10423252F330087D305 /* ServerSetup.swift */,
+				19E812EB23489697002C6A47 /* URLValidator.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 			files = (
 				19176D42232AC1F400D05187 /* GradientBlurView.swift in Sources */,
 				1960BEC223242EBC00BE4151 /* ApiClient.swift in Sources */,
+				19E812EC23489697002C6A47 /* URLValidator.swift in Sources */,
 				192C340E233F45450069ACE5 /* Log.swift in Sources */,
 				19CBF10C23254B5F0087D305 /* ServerConfiguration+picturePath.swift in Sources */,
 				19C7613E233F6D0D00313DA0 /* NowPlayingDTO.swift in Sources */,
