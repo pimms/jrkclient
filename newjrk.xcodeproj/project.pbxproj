@@ -80,9 +80,19 @@
 		19B9417723508CAB00661CED /* UIView+fillInSuperview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19176D43232ACA1200D05187 /* UIView+fillInSuperview.swift */; };
 		19B9417923508CE100661CED /* ServerConfiguration+picturePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CBF10B23254B5F0087D305 /* ServerConfiguration+picturePath.swift */; };
 		19B9417A23508CE800661CED /* String+stableHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19176D3F23297E8400D05187 /* String+stableHash.swift */; };
-		19B9417B23508CFE00661CED /* Decodable+fromJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960BEC323242F5F00BE4151 /* Decodable+fromJson.swift */; };
 		19B9417C23508D0A00661CED /* NSManagedObject+URIRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960BEB02323D2B300BE4151 /* NSManagedObject+URIRepresentation.swift */; };
-		19B9417E2350934400661CED /* NowPlayingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9417D2350934400661CED /* NowPlayingState.swift */; };
+		19B941802350984300661CED /* ServerStateSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9417F2350984300661CED /* ServerStateSender.swift */; };
+		19B9418323509B8900661CED /* WatchPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9418223509B8900661CED /* WatchPayload.swift */; };
+		19B9418423509B9C00661CED /* WatchPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9418223509B8900661CED /* WatchPayload.swift */; };
+		19B9418623509C0500661CED /* Encodable+toDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9418523509C0500661CED /* Encodable+toDictionary.swift */; };
+		19B9418923509C8700661CED /* Decodable+fromDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9418823509C8700661CED /* Decodable+fromDictionary.swift */; };
+		19B9418B23509CE400661CED /* Encodable+toDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9418523509C0500661CED /* Encodable+toDictionary.swift */; };
+		19B9418C23509CE400661CED /* Decodable+fromJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960BEC323242F5F00BE4151 /* Decodable+fromJson.swift */; };
+		19B9418D23509CE400661CED /* Decodable+fromDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9418823509C8700661CED /* Decodable+fromDictionary.swift */; };
+		19B9418F23509F0C00661CED /* WatchPayloadDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9418E23509F0C00661CED /* WatchPayloadDecoder.swift */; };
+		19B9419023509F2B00661CED /* WatchPayloadDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9418E23509F0C00661CED /* WatchPayloadDecoder.swift */; };
+		19B941922350A18E00661CED /* WCSession+send.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B941912350A18E00661CED /* WCSession+send.swift */; };
+		19B941932350A18E00661CED /* WCSession+send.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B941912350A18E00661CED /* WCSession+send.swift */; };
 		19CBF0FF232436F70087D305 /* MockNetworkClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CBF0FE232436F70087D305 /* MockNetworkClientTests.swift */; };
 		19CBF10223243CC20087D305 /* TestAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19CBF10123243CC20087D305 /* TestAssets.xcassets */; };
 		19CBF1072325342E0087D305 /* ServerSetupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CBF1062325342E0087D305 /* ServerSetupTests.swift */; };
@@ -244,7 +254,12 @@
 		19B90EA7235086EF004B4B40 /* PhoneConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneConnection.swift; sourceTree = "<group>"; };
 		19B9415C23508A7400661CED /* jrkKitWatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = jrkKitWatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		19B9415D23508A7400661CED /* jrkKit copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "jrkKit copy-Info.plist"; path = "/Users/pimms/code/roi/newClient/jrkKit copy-Info.plist"; sourceTree = "<absolute>"; };
-		19B9417D2350934400661CED /* NowPlayingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingState.swift; sourceTree = "<group>"; };
+		19B9417F2350984300661CED /* ServerStateSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerStateSender.swift; sourceTree = "<group>"; };
+		19B9418223509B8900661CED /* WatchPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchPayload.swift; sourceTree = "<group>"; };
+		19B9418523509C0500661CED /* Encodable+toDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+toDictionary.swift"; sourceTree = "<group>"; };
+		19B9418823509C8700661CED /* Decodable+fromDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decodable+fromDictionary.swift"; sourceTree = "<group>"; };
+		19B9418E23509F0C00661CED /* WatchPayloadDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchPayloadDecoder.swift; sourceTree = "<group>"; };
+		19B941912350A18E00661CED /* WCSession+send.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WCSession+send.swift"; sourceTree = "<group>"; };
 		19C7613D233F6D0D00313DA0 /* NowPlayingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingDTO.swift; sourceTree = "<group>"; };
 		19CBF0FE232436F70087D305 /* MockNetworkClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkClientTests.swift; sourceTree = "<group>"; };
 		19CBF10123243CC20087D305 /* TestAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestAssets.xcassets; sourceTree = "<group>"; };
@@ -491,6 +506,7 @@
 				192C340C233F45370069ACE5 /* Util */,
 				1960BEB32323D7D400BE4151 /* Core */,
 				1960BEBB2323FEF100BE4151 /* Network */,
+				19B9418123509B6F00661CED /* WatchConnectivity */,
 				19B90E542350735F004B4B40 /* jrkKit.h */,
 				19B90E552350735F004B4B40 /* Info.plist */,
 				194136642323A04E0087BCC6 /* newjrk.xcdatamodeld */,
@@ -515,7 +531,6 @@
 				19B90E8D23507ECE004B4B40 /* HostingController.swift */,
 				19B90E8F23507ECE004B4B40 /* ExtensionDelegate.swift */,
 				19B90EA7235086EF004B4B40 /* PhoneConnection.swift */,
-				19B9417D2350934400661CED /* NowPlayingState.swift */,
 				19B90E9123507ECE004B4B40 /* Assets.xcassets */,
 				19B90E9623507ECE004B4B40 /* Info.plist */,
 				19B90E9323507ECE004B4B40 /* Preview Content */,
@@ -535,6 +550,7 @@
 			isa = PBXGroup;
 			children = (
 				19B90EA5235081BB004B4B40 /* WatchConnection.swift */,
+				19B9417F2350984300661CED /* ServerStateSender.swift */,
 			);
 			path = WatchConnectivity;
 			sourceTree = "<group>";
@@ -552,12 +568,24 @@
 		19B9417823508CD700661CED /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				19B9418523509C0500661CED /* Encodable+toDictionary.swift */,
+				1960BEC323242F5F00BE4151 /* Decodable+fromJson.swift */,
+				19B9418823509C8700661CED /* Decodable+fromDictionary.swift */,
 				19CBF10B23254B5F0087D305 /* ServerConfiguration+picturePath.swift */,
 				19176D3F23297E8400D05187 /* String+stableHash.swift */,
-				1960BEC323242F5F00BE4151 /* Decodable+fromJson.swift */,
 				1960BEB02323D2B300BE4151 /* NSManagedObject+URIRepresentation.swift */,
+				19B941912350A18E00661CED /* WCSession+send.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		19B9418123509B6F00661CED /* WatchConnectivity */ = {
+			isa = PBXGroup;
+			children = (
+				19B9418223509B8900661CED /* WatchPayload.swift */,
+				19B9418E23509F0C00661CED /* WatchPayloadDecoder.swift */,
+			);
+			path = WatchConnectivity;
 			sourceTree = "<group>";
 		};
 		19CBF10A232534AF0087D305 /* Core */ = {
@@ -908,6 +936,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19176D42232AC1F400D05187 /* GradientBlurView.swift in Sources */,
+				19B941802350984300661CED /* ServerStateSender.swift in Sources */,
 				19B90EA6235081BB004B4B40 /* WatchConnection.swift in Sources */,
 				19B3444F232E672C0006CB9C /* RoundedButton.swift in Sources */,
 				1960BEBA2323DD7800BE4151 /* InitialConfigViewController.swift in Sources */,
@@ -947,12 +976,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19B9418323509B8900661CED /* WatchPayload.swift in Sources */,
 				19B9417723508CAB00661CED /* UIView+fillInSuperview.swift in Sources */,
 				19B9416D23508CA400661CED /* CoreDataStack.swift in Sources */,
 				19B9417523508CAB00661CED /* UIStoryboard+instantiate.swift in Sources */,
 				19B9417223508CAB00661CED /* Decodable+fromJson.swift in Sources */,
 				19B9416E23508CA400661CED /* CoreDataStackProtocol.swift in Sources */,
 				19B90E7223507610004B4B40 /* NowPlayingDTO.swift in Sources */,
+				19B9418F23509F0C00661CED /* WatchPayloadDecoder.swift in Sources */,
 				19B9417423508CAB00661CED /* UIAlertController+displayError.swift in Sources */,
 				19B90E6423507610004B4B40 /* PlayerState.swift in Sources */,
 				19B90E7123507610004B4B40 /* RootDTO.swift in Sources */,
@@ -963,13 +994,16 @@
 				19B90E6023507610004B4B40 /* WeakRef.swift in Sources */,
 				19B9417623508CAB00661CED /* String+stableHash.swift in Sources */,
 				19B90E7423507610004B4B40 /* NetworkClient.swift in Sources */,
+				19B941922350A18E00661CED /* WCSession+send.swift in Sources */,
 				19B90E7323507610004B4B40 /* LogEntryDTO.swift in Sources */,
 				19B90E6323507610004B4B40 /* StreamPlayer.swift in Sources */,
 				19B90E6523507610004B4B40 /* ServerSetup.swift in Sources */,
 				19B90E762350764B004B4B40 /* newjrk.xcdatamodeld in Sources */,
 				19B90E7523507610004B4B40 /* NetworkClientProtocol.swift in Sources */,
 				19B90E6623507610004B4B40 /* URLValidator.swift in Sources */,
+				19B9418923509C8700661CED /* Decodable+fromDictionary.swift in Sources */,
 				19B90E6223507610004B4B40 /* DelegateCollection.swift in Sources */,
+				19B9418623509C0500661CED /* Encodable+toDictionary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -981,7 +1015,6 @@
 				19B90E8C23507ECE004B4B40 /* ContentView.swift in Sources */,
 				19B90EA8235086EF004B4B40 /* PhoneConnection.swift in Sources */,
 				19B90E9023507ECE004B4B40 /* ExtensionDelegate.swift in Sources */,
-				19B9417E2350934400661CED /* NowPlayingState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -990,21 +1023,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				19B9416F23508CA500661CED /* CoreDataStack.swift in Sources */,
+				19B9418C23509CE400661CED /* Decodable+fromJson.swift in Sources */,
+				19B9418423509B9C00661CED /* WatchPayload.swift in Sources */,
 				19B9417023508CA500661CED /* CoreDataStackProtocol.swift in Sources */,
-				19B9417B23508CFE00661CED /* Decodable+fromJson.swift in Sources */,
 				19B9414023508A7400661CED /* NowPlayingDTO.swift in Sources */,
 				19B9417923508CE100661CED /* ServerConfiguration+picturePath.swift in Sources */,
 				19B9414323508A7400661CED /* PlayerState.swift in Sources */,
+				19B941932350A18E00661CED /* WCSession+send.swift in Sources */,
 				19B9414423508A7400661CED /* RootDTO.swift in Sources */,
 				19B9414623508A7400661CED /* ApiClient.swift in Sources */,
 				19B9414823508A7400661CED /* Log.swift in Sources */,
 				19B9417C23508D0A00661CED /* NSManagedObject+URIRepresentation.swift in Sources */,
+				19B9418B23509CE400661CED /* Encodable+toDictionary.swift in Sources */,
 				19B9414923508A7400661CED /* WeakRef.swift in Sources */,
 				19B9417A23508CE800661CED /* String+stableHash.swift in Sources */,
 				19B9414B23508A7400661CED /* NetworkClient.swift in Sources */,
+				19B9418D23509CE400661CED /* Decodable+fromDictionary.swift in Sources */,
 				19B9414C23508A7400661CED /* LogEntryDTO.swift in Sources */,
 				19B9414D23508A7400661CED /* StreamPlayer.swift in Sources */,
 				19B9414E23508A7400661CED /* ServerSetup.swift in Sources */,
+				19B9419023509F2B00661CED /* WatchPayloadDecoder.swift in Sources */,
 				19B9415123508A7400661CED /* newjrk.xcdatamodeld in Sources */,
 				19B9415423508A7400661CED /* NetworkClientProtocol.swift in Sources */,
 				19B9415523508A7400661CED /* URLValidator.swift in Sources */,

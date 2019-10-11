@@ -100,13 +100,10 @@ public class StreamPlayer: NSObject {
 
             switch keyPath {
             case "playbackBufferEmpty":
-                log.log("keyPath: playbackBufferEmpty")
                 isBuffering = true
             case "playbackLikelyToKeepUp":
-                log.log("keyPath: playbackLikelyToKeepUp")
                 isBuffering = false
             case "playbackBufferFull":
-                log.log("keyPath: playbackBufferFull")
                 isBuffering = false
             default:
                 notifyDelegates = false

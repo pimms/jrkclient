@@ -35,7 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             oldValue?.pause()
             streamSetupState = streamPlayer == nil ? .notStarted : .success
             watchConnection?.streamPlayer = streamPlayer
-            log.log("StreamPlayer set: \(String(describing: streamPlayer))")
         }
     }
 

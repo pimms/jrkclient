@@ -17,6 +17,7 @@ class WatchConnection: NSObject {
     var streamPlayer: StreamPlayer? {
         didSet {
             streamPlayer?.addDelegate(self)
+            sendServerStateIfNeeded()
         }
     }
 
@@ -24,11 +25,13 @@ class WatchConnection: NSObject {
 
     private lazy var log = Log(for: self)
     private let session: WCSession
+    private var serverStateSender: ServerStateSender
 
     // MARK: - Private methods
 
     private init(session: WCSession) {
         self.session = session
+        self.serverStateSender = ServerStateSender(session: session)
         super.init()
 
         session.delegate = self
@@ -39,12 +42,8 @@ class WatchConnection: NSObject {
         return session.activationState == .activated && session.isPaired && session.isWatchAppInstalled
     }
 
-    private func sayHello() {
-        guard isConnected() else { return }
-        log.log("Saying hello")
-        session.sendMessage(["message": "hello"],
-                            replyHandler: nil,
-                            errorHandler: nil)
+    private func sendServerStateIfNeeded() {
+        serverStateSender.sendIfNeeded(forPlayer: streamPlayer)
     }
 }
 
@@ -55,10 +54,14 @@ extension WatchConnection: WCSessionDelegate {
 
     func sessionDidDeactivate(_ session: WCSession) {
         log.log("Session deactivated")
+        serverStateSender.sessionDidDeactivate()
     }
 
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         log.log("Session activation completed with state '\(activationState.rawValue)'")
+        if activationState == .activated {
+            sendServerStateIfNeeded()
+        }
     }
 
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
@@ -75,16 +78,7 @@ extension WatchConnection: StreamPlayerDelegate {
     func streamPlayerChangedState(_ streamPlayer: StreamPlayer) {
         guard isConnected() else { return }
 
-        let title = streamPlayer.nowPlaying?.name ?? "JRK"
-        let season = streamPlayer.nowPlaying?.season ?? "???"
-        let state = streamPlayer.state.rawValue
-
-        let payload = [
-            "title": title,
-            "season": season,
-            "playerState": state
-        ]
-
-        session.sendMessage(payload, replyHandler: nil)
+        let payload = NowPlayingState(from: streamPlayer)
+        session.send(payload)
     }
 }
