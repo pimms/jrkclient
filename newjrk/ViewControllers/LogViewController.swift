@@ -1,4 +1,5 @@
 import UIKit
+import jrkKit
 
 class LogViewController: UIViewController {
     var apiClient: ApiClient?
