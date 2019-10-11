@@ -94,6 +94,7 @@
 		19B941922350A18E00661CED /* WCSession+send.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B941912350A18E00661CED /* WCSession+send.swift */; };
 		19B941932350A18E00661CED /* WCSession+send.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B941912350A18E00661CED /* WCSession+send.swift */; };
 		19B941952350A88000661CED /* ServerDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B941942350A88000661CED /* ServerDataManager.swift */; };
+		19B941972350AF7800661CED /* UIImage+scaledForWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B941962350AF7800661CED /* UIImage+scaledForWatch.swift */; };
 		19CBF0FF232436F70087D305 /* MockNetworkClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CBF0FE232436F70087D305 /* MockNetworkClientTests.swift */; };
 		19CBF10223243CC20087D305 /* TestAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19CBF10123243CC20087D305 /* TestAssets.xcassets */; };
 		19CBF1072325342E0087D305 /* ServerSetupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CBF1062325342E0087D305 /* ServerSetupTests.swift */; };
@@ -262,6 +263,7 @@
 		19B9418E23509F0C00661CED /* WatchPayloadDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchPayloadDecoder.swift; sourceTree = "<group>"; };
 		19B941912350A18E00661CED /* WCSession+send.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WCSession+send.swift"; sourceTree = "<group>"; };
 		19B941942350A88000661CED /* ServerDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerDataManager.swift; sourceTree = "<group>"; };
+		19B941962350AF7800661CED /* UIImage+scaledForWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+scaledForWatch.swift"; sourceTree = "<group>"; };
 		19C7613D233F6D0D00313DA0 /* NowPlayingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingDTO.swift; sourceTree = "<group>"; };
 		19CBF0FE232436F70087D305 /* MockNetworkClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkClientTests.swift; sourceTree = "<group>"; };
 		19CBF10123243CC20087D305 /* TestAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestAssets.xcassets; sourceTree = "<group>"; };
@@ -564,6 +566,7 @@
 				19A6E7F4232949D400CEC94D /* UIAlertController+displayError.swift */,
 				19176D3D2329767100D05187 /* UIStoryboard+instantiate.swift */,
 				19176D43232ACA1200D05187 /* UIView+fillInSuperview.swift */,
+				19B941962350AF7800661CED /* UIImage+scaledForWatch.swift */,
 			);
 			path = Extensions_iOS;
 			sourceTree = "<group>";
@@ -998,6 +1001,7 @@
 				19B9417623508CAB00661CED /* String+stableHash.swift in Sources */,
 				19B90E7423507610004B4B40 /* NetworkClient.swift in Sources */,
 				19B941922350A18E00661CED /* WCSession+send.swift in Sources */,
+				19B941972350AF7800661CED /* UIImage+scaledForWatch.swift in Sources */,
 				19B90E7323507610004B4B40 /* LogEntryDTO.swift in Sources */,
 				19B90E6323507610004B4B40 /* StreamPlayer.swift in Sources */,
 				19B90E6523507610004B4B40 /* ServerSetup.swift in Sources */,
