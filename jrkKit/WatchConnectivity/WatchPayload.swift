@@ -31,7 +31,7 @@ public struct NowPlayingState: WatchPayload {
     }
 }
 
-// MARK: - InitialConfiguration
+// MARK: - ServerState
 
 public struct ServerState: WatchPayload {
     public let rootUrl: String
