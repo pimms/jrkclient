@@ -1,6 +1,6 @@
 import Foundation
 
-public enum PlayerState {
+public enum PlayerState: String, CaseIterable {
     case notPlaying
     case buffering
     case playing

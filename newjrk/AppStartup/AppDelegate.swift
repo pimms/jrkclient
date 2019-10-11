@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didSet {
             oldValue?.pause()
             streamSetupState = streamPlayer == nil ? .notStarted : .success
+            watchConnection?.streamPlayer = streamPlayer
             log.log("StreamPlayer set: \(String(describing: streamPlayer))")
         }
     }
@@ -43,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private lazy var log = Log(for: self)
     private var streamSetupState: StreamSetupState = .notStarted
     private let delegates = DelegateCollection<StreamSetupDelegate>()
+    private let watchConnection = WatchConnection.createConnection()
 
     // MARK: - UIApplicationDelegate
 
