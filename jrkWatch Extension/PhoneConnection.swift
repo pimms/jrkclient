@@ -2,13 +2,8 @@ import Foundation
 import WatchConnectivity
 import jrkKitWatch
 
-protocol ServerStateDelegate: AnyObject {
-    func phoneConnection(_ connection: PhoneConnection, shouldRequestDataForServerState serverState: ServerState) -> Bool
-}
-
 class PhoneConnection: NSObject {
     let session = WCSession.default
-    weak var serverStateDelegate: ServerStateDelegate?
 
     private lazy var log = Log(for: self)
     private let payloadDecoder = WatchPayloadDecoder()
@@ -39,26 +34,12 @@ extension PhoneConnection: WCSessionDelegate {
     }
 
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
-        guard let payload = payloadDecoder.decodePayload(message) else {
+        guard let _ = payloadDecoder.decodePayload(message) else {
+            log.log(.warn, "Received unparsable message (reply required): \(message)")
             replyHandler([:])
             return
         }
 
-        if let serverState = payload as? ServerState {
-            onServerStateReceived(serverState, replyHandler: replyHandler)
-        } else {
-            log.log("Received unparsable message (reply required): \(message)")
-            replyHandler([:])
-        }
-    }
-}
-
-// MARK: - Message handling
-
-extension PhoneConnection {
-    private func onServerStateReceived(_ serverState: ServerState, replyHandler: @escaping ([String : Any]) -> Void) {
-        let needData = serverStateDelegate?.phoneConnection(self, shouldRequestDataForServerState: serverState) ?? false
-        log.log("ServerState received — need server data refresh: \(needData)")
-        replyHandler(["needServerData": needData])
+        replyHandler([:])
     }
 }

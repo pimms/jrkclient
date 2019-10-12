@@ -30,25 +30,3 @@ public struct NowPlayingState: WatchPayload {
         playerState = player.state
     }
 }
-
-// MARK: - ServerState
-
-public struct ServerState: WatchPayload {
-    public let rootUrl: String
-
-    public init(rootUrl: URL) {
-        self.rootUrl = rootUrl.absoluteString
-    }
-}
-
-// MARK: - ServerData
-
-public struct ServerData: WatchPayload {
-    public let rootUrl: String
-    public let streamImageData: Data
-
-    public init(rootUrl: String, streamImageData: Data) {
-        self.rootUrl = rootUrl
-        self.streamImageData = streamImageData
-    }
-}

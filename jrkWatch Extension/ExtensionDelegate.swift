@@ -2,10 +2,9 @@ import WatchKit
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     private let connection = PhoneConnection()
-    private let serverDataManager = ServerDataManager()
 
     func applicationDidFinishLaunching() {
-        connection.serverStateDelegate = serverDataManager
+        
     }
 
     func applicationDidBecomeActive() {

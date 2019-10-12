@@ -3,7 +3,7 @@ import Foundation
 public class WatchPayloadDecoder {
     private let types: [WatchPayload.Type] = [
         NowPlayingState.self,
-        ServerState.self
+        ServerState.self,
     ]
 
     public init() { }

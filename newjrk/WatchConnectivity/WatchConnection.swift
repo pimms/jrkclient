@@ -17,7 +17,6 @@ class WatchConnection: NSObject {
     var streamPlayer: StreamPlayer? {
         didSet {
             streamPlayer?.addDelegate(self)
-            sendServerStateIfNeeded()
         }
     }
 
@@ -25,13 +24,11 @@ class WatchConnection: NSObject {
 
     private lazy var log = Log(for: self)
     private let session: WCSession
-    private var serverStateSender: ServerStateSender
 
     // MARK: - Private methods
 
     private init(session: WCSession) {
         self.session = session
-        self.serverStateSender = ServerStateSender(session: session)
         super.init()
 
         session.delegate = self
@@ -40,10 +37,6 @@ class WatchConnection: NSObject {
 
     private func isConnected() -> Bool {
         return session.activationState == .activated && session.isPaired && session.isWatchAppInstalled
-    }
-
-    private func sendServerStateIfNeeded() {
-        serverStateSender.sendIfNeeded(forPlayer: streamPlayer)
     }
 }
 
@@ -54,14 +47,10 @@ extension WatchConnection: WCSessionDelegate {
 
     func sessionDidDeactivate(_ session: WCSession) {
         log.log("Session deactivated")
-        serverStateSender.sessionDidDeactivate()
     }
 
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         log.log("Session activation completed with state '\(activationState.rawValue)'")
-        if activationState == .activated {
-            sendServerStateIfNeeded()
-        }
     }
 
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
