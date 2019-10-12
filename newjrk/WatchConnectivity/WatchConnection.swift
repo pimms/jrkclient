@@ -17,6 +17,7 @@ class WatchConnection: NSObject {
     var streamPlayer: StreamPlayer? {
         didSet {
             streamPlayer?.addDelegate(self)
+            updateApplicationContext()
         }
     }
 
@@ -37,6 +38,26 @@ class WatchConnection: NSObject {
 
     private func isConnected() -> Bool {
         return session.activationState == .activated && session.isPaired && session.isWatchAppInstalled
+    }
+
+    private func updateApplicationContext() {
+        guard let currentUrl = streamPlayer?.serverConfiguration.url?.absoluteString else {
+            log.log(.error, "Could not update Application Context: no URL defined")
+            return
+        }
+
+        if let existingContext = ApplicationContext(fromDictionary: session.applicationContext), existingContext.url == currentUrl {
+            return
+        }
+
+        log.log("Updating Application Context")
+        let currentContext = ApplicationContext(url: currentUrl)
+
+        do {
+            try session.updateApplicationContext(currentContext.asDictionary())
+        } catch {
+            log.log(.error, "Failed to update ApplicationContext: \(error.localizedDescription)")
+        }
     }
 }
 

@@ -1,10 +1,10 @@
 import Foundation
 
 public extension Decodable {
-    init?(jsonDictionary: [String: Any]) {
+    init?(fromDictionary dict: [String: Any]) {
         let decoder = JSONDecoder()
 
-        guard let data = try? JSONSerialization.data(withJSONObject: jsonDictionary, options: []) else {
+        guard let data = try? JSONSerialization.data(withJSONObject: dict, options: []) else {
             return nil
         }
 

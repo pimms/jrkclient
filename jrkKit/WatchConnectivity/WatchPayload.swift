@@ -30,3 +30,13 @@ public struct NowPlayingState: WatchPayload {
         playerState = player.state
     }
 }
+
+// MARK: - ApplicationContext
+
+public struct ApplicationContext: WatchPayload {
+    public let url: String
+
+    public init(url: String) {
+        self.url = url
+    }
+}
