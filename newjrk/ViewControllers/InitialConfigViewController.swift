@@ -68,6 +68,7 @@ class InitialConfigViewController: UIViewController {
             }
 
             self?.serverSetup = ServerSetup(apiClient: apiClient, dataStack: dataStack, serverConfig: serverConfig)
+            self?.serverSetup?.delegate = self
             self?.serverSetup?.performInitialSetup { error in
                 guard error == nil else {
                     self?.handleSetupError(ConfigError.serverSetupError)
@@ -111,6 +112,14 @@ class InitialConfigViewController: UIViewController {
 extension InitialConfigViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return attemptSubmit()
+    }
+}
+
+// MARK: - ServerSetupDelegate
+
+extension InitialConfigViewController: ServerSetupDelegate {
+    func serverSetup(_ serverSetup: ServerSetup, initializedPlayer player: StreamPlayer) {
+        AppDelegate.shared.streamPlayer = player
     }
 }
 

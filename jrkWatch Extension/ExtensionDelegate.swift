@@ -3,10 +3,13 @@ import WatchConnectivity
 import jrkKitWatch
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
+    static var shared: ExtensionDelegate { WKExtension.shared().delegate as! ExtensionDelegate }
+
+    let streamPictureStore = StreamPictureStore()
+
     private let session = WCSession.default
     private let messageReceiver: MessageReceiver
     private let streamPictureFetcher: StreamPictureFetcher
-    private let streamPictureStore = StreamPictureStore()
 
     private lazy var log = Log(for: self)
 

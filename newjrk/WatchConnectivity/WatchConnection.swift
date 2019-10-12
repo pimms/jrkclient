@@ -98,7 +98,11 @@ extension WatchConnection: WCSessionDelegate {
 
 extension WatchConnection {
     private func handleStreamPictureRequest(_ request: StreamPictureRequest, replyHandler: @escaping ([String : Any]) -> Void) {
-        guard let imageData = streamPlayer?.streamPicture?.scaledForWatch()?.pngData() else {
+
+        guard
+            let scaledImage = streamPlayer?.streamPicture?.scaledForWatch(),
+            let imageData = scaledImage.jpegData(compressionQuality: 0)
+        else {
             log.log(.error, "Failed to create watch-scaled image data")
             replyHandler([:])
             return
@@ -106,7 +110,8 @@ extension WatchConnection {
 
         log.log("Successfully responding to stream picture request")
         let response = StreamPictureResponse(imageData: imageData)
-        replyHandler(response.asDictionary())
+        let dictionary = response.asDictionary()
+        replyHandler(dictionary)
     }
 }
 

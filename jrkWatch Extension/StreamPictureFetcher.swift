@@ -17,12 +17,11 @@ class StreamPictureFetcher {
 
     func fetchImage(forContext context: ApplicationContext, completion: @escaping (Result<UIImage,Error>) -> Void) {
         let request = StreamPictureRequest()
-        session.send(request, replyHandler: { [weak self] response in
+        session.send(request, replyHandler: { [weak self] result in
             guard
-                let response = StreamPictureResponse(fromDictionary: response),
+                let response = StreamPictureResponse(fromDictionary: result),
                 let image = UIImage(data: response.imageData)
             else {
-                self?.log.log(.error, "Failed to decode stream picture response")
                 completion(.failure(FetchError.decodingError))
                 return
             }

@@ -12,7 +12,9 @@ public class ServerSetup {
 
     // MARK: - Public properties
 
-    weak var delegate: ServerSetupDelegate?
+    public weak var delegate: ServerSetupDelegate?
+
+    // MARK: - Internal properties
     var streamPlayer: StreamPlayer?
 
     // MARK: - Private properties
