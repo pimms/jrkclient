@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1907CAB9232FEDBA00998D48 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1907CAB8232FEDB900998D48 /* AVFoundation.framework */; };
 		19176D42232AC1F400D05187 /* GradientBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19176D41232AC1F400D05187 /* GradientBlurView.swift */; };
+		1926B06F235269570021A4A9 /* StreamPictureFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1926B06E235269570021A4A9 /* StreamPictureFetcher.swift */; };
+		1926B07123526C3D0021A4A9 /* StreamPictureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1926B07023526C3D0021A4A9 /* StreamPictureStore.swift */; };
+		1926B0742352700A0021A4A9 /* WCSession+applicationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1926B0732352700A0021A4A9 /* WCSession+applicationContext.swift */; };
 		1941365C2323A04E0087BCC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1941365B2323A04E0087BCC6 /* AppDelegate.swift */; };
 		1941365E2323A04E0087BCC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1941365D2323A04E0087BCC6 /* SceneDelegate.swift */; };
 		194136632323A04E0087BCC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 194136612323A04E0087BCC6 /* Main.storyboard */; };
@@ -49,7 +52,7 @@
 		19B90E9523507ECE004B4B40 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19B90E9423507ECE004B4B40 /* Preview Assets.xcassets */; };
 		19B90E9923507ECE004B4B40 /* jrkWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 19B90E7A23507ECC004B4B40 /* jrkWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		19B90EA6235081BB004B4B40 /* WatchConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B90EA5235081BB004B4B40 /* WatchConnection.swift */; };
-		19B90EA8235086EF004B4B40 /* PhoneConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B90EA7235086EF004B4B40 /* PhoneConnection.swift */; };
+		19B90EA8235086EF004B4B40 /* MessageReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B90EA7235086EF004B4B40 /* MessageReceiver.swift */; };
 		19B9413E23508A7400661CED /* jrkKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 19B90E542350735F004B4B40 /* jrkKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		19B9414023508A7400661CED /* NowPlayingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C7613D233F6D0D00313DA0 /* NowPlayingDTO.swift */; };
 		19B9414323508A7400661CED /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195F2EE0232FED0200AF84A1 /* PlayerState.swift */; };
@@ -203,6 +206,9 @@
 		19176D3F23297E8400D05187 /* String+stableHash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+stableHash.swift"; sourceTree = "<group>"; };
 		19176D41232AC1F400D05187 /* GradientBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBlurView.swift; sourceTree = "<group>"; };
 		19176D43232ACA1200D05187 /* UIView+fillInSuperview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+fillInSuperview.swift"; sourceTree = "<group>"; };
+		1926B06E235269570021A4A9 /* StreamPictureFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamPictureFetcher.swift; sourceTree = "<group>"; };
+		1926B07023526C3D0021A4A9 /* StreamPictureStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamPictureStore.swift; sourceTree = "<group>"; };
+		1926B0732352700A0021A4A9 /* WCSession+applicationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WCSession+applicationContext.swift"; sourceTree = "<group>"; };
 		192C340D233F45450069ACE5 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		192C3411233F4E530069ACE5 /* DelegateCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateCollection.swift; sourceTree = "<group>"; };
 		194136582323A04E0087BCC6 /* newjrk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = newjrk.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -251,7 +257,7 @@
 		19B90E9423507ECE004B4B40 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		19B90E9623507ECE004B4B40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19B90EA5235081BB004B4B40 /* WatchConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnection.swift; sourceTree = "<group>"; };
-		19B90EA7235086EF004B4B40 /* PhoneConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneConnection.swift; sourceTree = "<group>"; };
+		19B90EA7235086EF004B4B40 /* MessageReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageReceiver.swift; sourceTree = "<group>"; };
 		19B9415C23508A7400661CED /* jrkKitWatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = jrkKitWatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		19B9415D23508A7400661CED /* jrkKit copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "jrkKit copy-Info.plist"; path = "/Users/pimms/code/roi/newClient/jrkKit copy-Info.plist"; sourceTree = "<absolute>"; };
 		19B9418223509B8900661CED /* WatchPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchPayload.swift; sourceTree = "<group>"; };
@@ -329,6 +335,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1926B07223526FFE0021A4A9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1926B0732352700A0021A4A9 /* WCSession+applicationContext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		192C340C233F45370069ACE5 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -527,10 +541,13 @@
 		19B90E8A23507ECE004B4B40 /* jrkWatch Extension */ = {
 			isa = PBXGroup;
 			children = (
+				1926B07223526FFE0021A4A9 /* Extensions */,
 				19B90E8B23507ECE004B4B40 /* ContentView.swift */,
 				19B90E8D23507ECE004B4B40 /* HostingController.swift */,
 				19B90E8F23507ECE004B4B40 /* ExtensionDelegate.swift */,
-				19B90EA7235086EF004B4B40 /* PhoneConnection.swift */,
+				19B90EA7235086EF004B4B40 /* MessageReceiver.swift */,
+				1926B06E235269570021A4A9 /* StreamPictureFetcher.swift */,
+				1926B07023526C3D0021A4A9 /* StreamPictureStore.swift */,
 				19B90E9123507ECE004B4B40 /* Assets.xcassets */,
 				19B90E9623507ECE004B4B40 /* Info.plist */,
 				19B90E9323507ECE004B4B40 /* Preview Content */,
@@ -1011,9 +1028,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1926B07123526C3D0021A4A9 /* StreamPictureStore.swift in Sources */,
 				19B90E8E23507ECE004B4B40 /* HostingController.swift in Sources */,
 				19B90E8C23507ECE004B4B40 /* ContentView.swift in Sources */,
-				19B90EA8235086EF004B4B40 /* PhoneConnection.swift in Sources */,
+				1926B0742352700A0021A4A9 /* WCSession+applicationContext.swift in Sources */,
+				19B90EA8235086EF004B4B40 /* MessageReceiver.swift in Sources */,
+				1926B06F235269570021A4A9 /* StreamPictureFetcher.swift in Sources */,
 				19B90E9023507ECE004B4B40 /* ExtensionDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

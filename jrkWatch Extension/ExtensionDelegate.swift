@@ -1,20 +1,34 @@
 import WatchKit
+import WatchConnectivity
+import jrkKitWatch
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
-    private let connection = PhoneConnection()
+    private let session = WCSession.default
+    private let messageReceiver: MessageReceiver
+    private let streamPictureFetcher: StreamPictureFetcher
+    private let streamPictureStore = StreamPictureStore()
+
+    private lazy var log = Log(for: self)
+
+    override init() {
+        messageReceiver = MessageReceiver(session: session)
+        streamPictureFetcher = StreamPictureFetcher(session: session)
+        super.init()
+
+        messageReceiver.delegate = self
+    }
 
     func applicationDidFinishLaunching() {
         
     }
 
     func applicationDidBecomeActive() {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        connection.activate()
+        session.activate()
+        refreshPictureIfNeeded()
     }
 
     func applicationWillResignActive() {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, etc.
+
     }
 
     func handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {
@@ -46,5 +60,38 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
             }
         }
     }
+}
 
+extension ExtensionDelegate {
+    private func refreshPictureIfNeeded() {
+        guard
+            let context = session.context,
+            shouldFetchPicture(forContext: context)
+        else {
+            return
+        }
+
+        streamPictureFetcher.fetchImage(forContext: context, completion: { [weak streamPictureStore] result in
+            if case .success(let image) = result {
+                streamPictureStore?.saveImage(image, forContext: context)
+            }
+        })
+    }
+
+    private func shouldFetchPicture(forContext context: ApplicationContext) -> Bool {
+        return context.url != streamPictureStore.urlForCurrentImage
+    }
+}
+
+// MARK: - MessageReceiverDelegate
+
+extension ExtensionDelegate: MessageReceiverDelegate {
+    func messageReceiver(_ messageReceiver: MessageReceiver, didReceiveNowPlayingState nowPlaying: NowPlayingState) {
+        // TODO!
+    }
+
+    func messageReceiverDidReceiveApplicationContext(_ messageReceiver: MessageReceiver) {
+        log.log("Received Application Context")
+        refreshPictureIfNeeded()
+    }
 }

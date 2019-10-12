@@ -25,6 +25,7 @@ class WatchConnection: NSObject {
 
     private lazy var log = Log(for: self)
     private let session: WCSession
+    private let payloadDecoder = WatchPayloadDecoder()
 
     // MARK: - Private methods
 
@@ -46,7 +47,7 @@ class WatchConnection: NSObject {
             return
         }
 
-        if let existingContext = ApplicationContext(fromDictionary: session.applicationContext), existingContext.url == currentUrl {
+        if let existingContext = ApplicationContext(fromDictionary: session.receivedApplicationContext), existingContext.url == currentUrl {
             return
         }
 
@@ -80,9 +81,36 @@ extension WatchConnection: WCSessionDelegate {
 
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
         log.log("Received message (reply required): \(message)")
+
+        if let watchPayload = payloadDecoder.decodePayload(message) {
+            if let pictureRequest = watchPayload as? StreamPictureRequest {
+                handleStreamPictureRequest(pictureRequest, replyHandler: replyHandler)
+            } else {
+                log.log(.warn, "Unhandled WatchPayload: \(watchPayload)")
+            }
+        }
+
         replyHandler([:])
     }
 }
+
+// MARK: - Message Handling
+
+extension WatchConnection {
+    private func handleStreamPictureRequest(_ request: StreamPictureRequest, replyHandler: @escaping ([String : Any]) -> Void) {
+        guard let imageData = streamPlayer?.streamPicture?.scaledForWatch()?.pngData() else {
+            log.log(.error, "Failed to create watch-scaled image data")
+            replyHandler([:])
+            return
+        }
+
+        log.log("Successfully responding to stream picture request")
+        let response = StreamPictureResponse(imageData: imageData)
+        replyHandler(response.asDictionary())
+    }
+}
+
+// MARK: - StreamPlayerDelegate
 
 extension WatchConnection: StreamPlayerDelegate {
     func streamPlayerChangedState(_ streamPlayer: StreamPlayer) {

@@ -40,3 +40,20 @@ public struct ApplicationContext: WatchPayload {
         self.url = url
     }
 }
+
+// MARK: - StreamPictureRequest
+
+public struct StreamPictureRequest: WatchPayload {
+    public init() { }
+}
+
+// MARK: - StreamPictureResponse
+
+public struct StreamPictureResponse: WatchPayload {
+    public let imageData: Data
+
+    public init(imageData: Data) {
+        self.imageData = imageData
+    }
+}
+

@@ -2,23 +2,26 @@ import Foundation
 import WatchConnectivity
 import jrkKitWatch
 
-class PhoneConnection: NSObject {
-    let session = WCSession.default
+protocol MessageReceiverDelegate: AnyObject {
+    func messageReceiver(_ messageReceiver: MessageReceiver, didReceiveNowPlayingState nowPlaying: NowPlayingState)
+    func messageReceiverDidReceiveApplicationContext(_ messageReceiver: MessageReceiver)
+}
 
-    private lazy var log = Log(for: self)
+class MessageReceiver: NSObject {
+    weak var delegate: MessageReceiverDelegate?
+
+    private let session: WCSession
     private let payloadDecoder = WatchPayloadDecoder()
+    private lazy var log = Log(for: self)
 
-    override init() {
+    required init(session: WCSession) {
+        self.session = session
         super.init()
-        session.delegate = self
-    }
-
-    func activate() {
-        session.activate()
+        self.session.delegate = self
     }
 }
 
-extension PhoneConnection: WCSessionDelegate {
+extension MessageReceiver: WCSessionDelegate {
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         log.log("Session activated with state: \(activationState.rawValue)")
     }
@@ -26,7 +29,7 @@ extension PhoneConnection: WCSessionDelegate {
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         if let payload = payloadDecoder.decodePayload(message) {
             if let nowPlaying = payload as? NowPlayingState {
-                log.log("TODO: Handle NowPlayingState update: \(nowPlaying)")
+                delegate?.messageReceiver(self, didReceiveNowPlayingState: nowPlaying)
             }
         } else {
             log.log("Received unparsable message (no reply required): \(message)")
@@ -41,5 +44,9 @@ extension PhoneConnection: WCSessionDelegate {
         }
 
         replyHandler([:])
+    }
+
+    func session(_: WCSession, didReceiveApplicationContext _: [String : Any]) {
+        delegate?.messageReceiverDidReceiveApplicationContext(self)
     }
 }
