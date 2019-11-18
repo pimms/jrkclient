@@ -43,6 +43,7 @@ extension LoadingView {
         guard let loadingView = loaded?.first as? LoadingView else { return nil }
         loadingView.message = message
         loadingView.alpha = 0
+        loadingView.translatesAutoresizingMaskIntoConstraints = false
 
         viewController.view.addSubview(loadingView)
 

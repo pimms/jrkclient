@@ -1,9 +1,5 @@
 import UIKit
 
-public protocol ServerSetupDelegate: AnyObject {
-    func serverSetup(_ serverSetup: ServerSetup, initializedPlayer player: StreamPlayer)
-}
-
 public class ServerSetup {
     enum SetupError: String, Error {
         case imagePersistFailure = "Failed to persist stream image"
@@ -12,10 +8,7 @@ public class ServerSetup {
 
     // MARK: - Public properties
 
-    public weak var delegate: ServerSetupDelegate?
-
-    // MARK: - Internal properties
-    var streamPlayer: StreamPlayer?
+    public internal(set) var streamPlayer: StreamPlayer?
 
     // MARK: - Private properties
 
@@ -33,25 +26,25 @@ public class ServerSetup {
 
     // MARK: - Public methods
 
-    public func performInitialSetup(completion: @escaping (Error?) -> Void) {
+    public func performInitialSetup(completion: @escaping (Result<StreamPlayer,Error>) -> Void) {
         apiClient.loadStreamPicture { [weak self] imageResult in
             guard let self = self else { return }
             switch imageResult {
             case .success(let image):
                 guard self.persistImage(image) else {
-                    completion(SetupError.imagePersistFailure)
+                    completion(.failure(SetupError.imagePersistFailure))
                     return
                 }
                 self.updateStreamName()
 
-                guard self.initializePlayer() else {
-                    completion(SetupError.playerInitializationError)
+                guard self.initializePlayer(), let streamPlayer = self.streamPlayer else {
+                    completion(.failure(SetupError.playerInitializationError))
                     return
                 }
 
-                completion(nil)
+                completion(.success(streamPlayer))
             case .failure(let error):
-                completion(error)
+                completion(.failure(error))
             }
         }
     }
@@ -83,7 +76,6 @@ public class ServerSetup {
         }
 
         streamPlayer = player
-        delegate?.serverSetup(self, initializedPlayer: player)
         return true
     }
 }

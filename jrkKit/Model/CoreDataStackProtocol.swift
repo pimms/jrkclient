@@ -6,6 +6,7 @@ enum CoreDataStackError: Error {
 
 public protocol CoreDataStackProtocol {
     var managedObjectContext: NSManagedObjectContext { get }
+    func setup(completion: @escaping () -> Void)
 }
 
 // MARK: - Persistence actions

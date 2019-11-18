@@ -1,3 +1,4 @@
+#if !os(tvOS)
 import Foundation
 import WatchConnectivity
 
@@ -8,3 +9,4 @@ public extension WCSession {
         sendMessage(watchPayload.encodeWatchPayload(), replyHandler: replyHandler, errorHandler: errorHandler)
     }
 }
+#endif

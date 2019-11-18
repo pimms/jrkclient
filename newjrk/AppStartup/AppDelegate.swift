@@ -51,7 +51,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let isRunningTests = UserDefaults.standard.bool(forKey: "isRunningUnitTests")
         if !isRunningTests {
-            attemptServerSetup()
+            coreDataStack.setup { [weak self] in
+                self?.attemptServerSetup()
+            }
         }
 
         return true

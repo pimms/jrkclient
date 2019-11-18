@@ -68,14 +68,13 @@ class InitialConfigViewController: UIViewController {
             }
 
             self?.serverSetup = ServerSetup(apiClient: apiClient, dataStack: dataStack, serverConfig: serverConfig)
-            self?.serverSetup?.delegate = self
-            self?.serverSetup?.performInitialSetup { error in
-                guard error == nil else {
+            self?.serverSetup?.performInitialSetup { result in
+                switch result {
+                case .failure(_):
                     self?.handleSetupError(ConfigError.serverSetupError)
-                    return
+                case .success(let streamPlayer):
+                    self?.handleSetupCompleted(streamPlayer: streamPlayer, serverConfig: serverConfig, apiClient: apiClient)
                 }
-
-                self?.handleSetupCompleted(serverConfig: serverConfig, apiClient: apiClient)
             }
         }
     }
@@ -86,18 +85,16 @@ class InitialConfigViewController: UIViewController {
         return serverConfig
     }
 
-    private func handleSetupCompleted(serverConfig: ServerConfiguration, apiClient: ApiClient) {
+    private func handleSetupCompleted(streamPlayer: StreamPlayer, serverConfig: ServerConfiguration, apiClient: ApiClient) {
         loadingView?.remove()
 
-        guard
-            let player = AppDelegate.shared.streamPlayer,
-            dataStack.save()
-        else { return }
+        AppDelegate.shared.streamPlayer = streamPlayer
+        guard dataStack.save() else { return }
 
         dataStack.setPreferredServerConfiguration(serverConfig)
 
         let playerVc = UIStoryboard.instantiate(PlayerViewController.self)
-        playerVc.setup(streamPlayer: player)
+        playerVc.setup(streamPlayer: streamPlayer)
         navigationController?.setViewControllers([playerVc], animated: true)
     }
 
@@ -112,14 +109,6 @@ class InitialConfigViewController: UIViewController {
 extension InitialConfigViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return attemptSubmit()
-    }
-}
-
-// MARK: - ServerSetupDelegate
-
-extension InitialConfigViewController: ServerSetupDelegate {
-    func serverSetup(_ serverSetup: ServerSetup, initializedPlayer player: StreamPlayer) {
-        AppDelegate.shared.streamPlayer = player
     }
 }
 
