@@ -83,6 +83,10 @@ public extension CoreDataStackProtocol {
                                        forKey: preferredServerConfigurationKey)
     }
 
+    func removePreferredServerConfiguration() {
+        UserDefaults.standard.removeObject(forKey: preferredServerConfigurationKey)
+    }
+
     func preferredServerConfiguration() -> ServerConfiguration? {
         guard
             let uriString = UserDefaults.standard.value(forKey: preferredServerConfigurationKey) as? String,
