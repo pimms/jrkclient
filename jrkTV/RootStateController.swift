@@ -27,10 +27,14 @@ class RootStateController: UIViewController {
                 }
 
                 self?.log.log("Successfully connected to existing configuration")
-                let streamPlayer = StreamPlayer(serverConfiguration: preferredConfiguration, apiClient: apiClient)
-                self?.streamPlayer = streamPlayer
+                guard let streamPlayer = StreamPlayer(serverConfiguration: preferredConfiguration, apiClient: apiClient) else {
+                    self?.handleConnectionError(nil)
+                    return
+                }
 
-                fatalError("oooooopsies")
+                self?.streamPlayer = streamPlayer
+                let playerViewController = PlayerViewController(streamPlayer: streamPlayer)
+                self?.add(playerViewController)
             }
         } else {
             log.log("No configuration exists")

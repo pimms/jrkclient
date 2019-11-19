@@ -22,6 +22,7 @@
 		1960BEBA2323DD7800BE4151 /* InitialConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960BEB92323DD7800BE4151 /* InitialConfigViewController.swift */; };
 		1960BECA2324346E00BE4151 /* ApiClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960BEC92324346E00BE4151 /* ApiClientTests.swift */; };
 		1960BECC2324349A00BE4151 /* MockNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960BECB2324349A00BE4151 /* MockNetworkClient.swift */; };
+		19610BF82384774F000639F7 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19610BF72384774F000639F7 /* PlayerViewController.swift */; };
 		197C077023832DDE005E2084 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197C076F23832DDE005E2084 /* AppDelegate.swift */; };
 		197C077223832DDE005E2084 /* RootStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197C077123832DDE005E2084 /* RootStateController.swift */; };
 		197C077523832DDE005E2084 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 197C077323832DDE005E2084 /* Main.storyboard */; };
@@ -304,6 +305,7 @@
 		1960BEC5232433B500BE4151 /* NetworkClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientProtocol.swift; sourceTree = "<group>"; };
 		1960BEC92324346E00BE4151 /* ApiClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClientTests.swift; sourceTree = "<group>"; };
 		1960BECB2324349A00BE4151 /* MockNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkClient.swift; sourceTree = "<group>"; };
+		19610BF72384774F000639F7 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		197C076D23832DDE005E2084 /* jrkTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jrkTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		197C076F23832DDE005E2084 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		197C077123832DDE005E2084 /* RootStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootStateController.swift; sourceTree = "<group>"; };
@@ -616,6 +618,7 @@
 				197C077E23832DDF005E2084 /* Info.plist */,
 				197C077623832DDE005E2084 /* jrkTV.xcdatamodeld */,
 				197C07FB238334D9005E2084 /* SetupViewController.swift */,
+				19610BF72384774F000639F7 /* PlayerViewController.swift */,
 			);
 			path = jrkTV;
 			sourceTree = "<group>";
@@ -1230,6 +1233,7 @@
 				197C077223832DDE005E2084 /* RootStateController.swift in Sources */,
 				197C077023832DDE005E2084 /* AppDelegate.swift in Sources */,
 				197C077823832DDE005E2084 /* jrkTV.xcdatamodeld in Sources */,
+				19610BF82384774F000639F7 /* PlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

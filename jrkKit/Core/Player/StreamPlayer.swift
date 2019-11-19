@@ -40,6 +40,7 @@ public class StreamPlayer: NSObject {
 
     public let serverConfiguration: ServerConfiguration
     public let apiClient: ApiClient
+    public let player: AVPlayer
     public private(set) var streamPicture: UIImage?
     public private(set) var nowPlaying: NowPlayingDTO?
 
@@ -47,7 +48,6 @@ public class StreamPlayer: NSObject {
 
     private lazy var log = Log(for: self)
     private let delegates = DelegateCollection<StreamPlayerDelegate>()
-    private let player: AVPlayer
     private let playerItem: AVPlayerItem
     private var isBuffering = false
 
