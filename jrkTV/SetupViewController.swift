@@ -1,6 +1,10 @@
 import UIKit
 import jrkKitTV
 
+protocol SetupViewControllerDelegate: AnyObject {
+    func setupViewController(_ vc: SetupViewController, initializedPlayer player: StreamPlayer)
+}
+
 class SetupViewController: UIViewController {
     private enum ConfigError: String, Error {
         case rootDocumentFailure = "Failed to load the root document of the specified server."
@@ -10,6 +14,10 @@ class SetupViewController: UIViewController {
         case unknownError = "Uknown error"
         case notImplementedYet = "TODO!"
     }
+
+    // MARK: - Internal properties
+
+    weak var delegate: SetupViewControllerDelegate?
 
     // MARK: - Private properties
 
@@ -133,8 +141,7 @@ class SetupViewController: UIViewController {
     private func handleSetupCompleted(streamPlayer: StreamPlayer, serverConfig: ServerConfiguration, apiClient: ApiClient) {
         guard dataStack.save() else { return }
         dataStack.setPreferredServerConfiguration(serverConfig)
-
-        fatalError("TODO: Kickboot a player VC of some sort")
+        delegate?.setupViewController(self, initializedPlayer: streamPlayer)
     }
 }
 

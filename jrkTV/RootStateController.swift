@@ -29,6 +29,8 @@ class RootStateController: UIViewController {
                 self?.log.log("Successfully connected to existing configuration")
                 let streamPlayer = StreamPlayer(serverConfiguration: preferredConfiguration, apiClient: apiClient)
                 self?.streamPlayer = streamPlayer
+
+                fatalError("oooooopsies")
             }
         } else {
             log.log("No configuration exists")
@@ -47,6 +49,7 @@ class RootStateController: UIViewController {
 
     private func setupNewConfiguration() {
         let setupViewController = SetupViewController(dataStack: dataStack)
+        setupViewController.delegate = self
         add(setupViewController)
     }
 }
@@ -59,7 +62,7 @@ extension RootStateController {
         if let errorString = error as? String {
             message = "Error: \(errorString)"
         } else {
-            message = "Unknown error"
+            message = "Unknown error\(error == nil ? "" : " (\(error!))")"
         }
 
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -71,5 +74,13 @@ extension RootStateController {
             self?.attemptServerSetup()
         }))
         present(alertController, animated: true)
+    }
+}
+
+extension RootStateController: SetupViewControllerDelegate {
+    func setupViewController(_ vc: SetupViewController, initializedPlayer player: StreamPlayer) {
+        self.streamPlayer = player
+        self.remove(vc)
+        attemptServerSetup()
     }
 }
