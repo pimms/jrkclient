@@ -365,7 +365,6 @@
 		19F87DF12323B485008473C3 /* CoreDataStackProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStackProtocol.swift; sourceTree = "<group>"; };
 		19F87DF32323C0AA008473C3 /* newjrk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = newjrk.entitlements; sourceTree = "<group>"; };
 		19F87DF52323C0B3008473C3 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		F578A076238FA6110012DBCD /* jrkKitWatch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "jrkKitWatch-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -657,7 +656,6 @@
 				19B9418123509B6F00661CED /* WatchConnectivity */,
 				19B90E542350735F004B4B40 /* jrkKit.h */,
 				19B90E552350735F004B4B40 /* Info.plist */,
-				F578A076238FA6110012DBCD /* jrkKitWatch-Info.plist */,
 				194136642323A04E0087BCC6 /* newjrk.xcdatamodeld */,
 			);
 			path = jrkKit;
@@ -1791,7 +1789,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "jrkKit copy2-Info.plist";
+				INFOPLIST_FILE = "jrkKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1820,7 +1818,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "jrkKit copy2-Info.plist";
+				INFOPLIST_FILE = "jrkKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1991,7 +1989,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "jrkKit/jrkKitWatch-Info.plist";
+				INFOPLIST_FILE = "jrkKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2021,7 +2019,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "jrkKit/jrkKitWatch-Info.plist";
+				INFOPLIST_FILE = "jrkKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
