@@ -317,9 +317,7 @@
 		197C078323832DDF005E2084 /* jrkTVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = jrkTVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		197C078723832DDF005E2084 /* jrkTVTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jrkTVTests.swift; sourceTree = "<group>"; };
 		197C078923832DDF005E2084 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		197C07C923832E8C005E2084 /* jrkKitWatch copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "jrkKitWatch copy-Info.plist"; path = "/Users/pimms/code/roi/newClient/jrkKitWatch copy-Info.plist"; sourceTree = "<absolute>"; };
 		197C07F523832F67005E2084 /* jrkKitTV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = jrkKitTV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		197C07F623832F67005E2084 /* jrkKit copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "jrkKit copy2-Info.plist"; path = "/Users/pimms/code/roi/newClient/jrkKit copy2-Info.plist"; sourceTree = "<absolute>"; };
 		197C07FB238334D9005E2084 /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		197C07FD23833574005E2084 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		19A6E7F2232948DF00CEC94D /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
@@ -344,7 +342,6 @@
 		19B90EA5235081BB004B4B40 /* WatchConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnection.swift; sourceTree = "<group>"; };
 		19B90EA7235086EF004B4B40 /* MessageReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageReceiver.swift; sourceTree = "<group>"; };
 		19B9415C23508A7400661CED /* jrkKitWatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = jrkKitWatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		19B9415D23508A7400661CED /* jrkKit copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "jrkKit copy-Info.plist"; path = "/Users/pimms/code/roi/newClient/jrkKit copy-Info.plist"; sourceTree = "<absolute>"; };
 		19B9418223509B8900661CED /* WatchPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchPayload.swift; sourceTree = "<group>"; };
 		19B9418523509C0500661CED /* Encodable+toDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+toDictionary.swift"; sourceTree = "<group>"; };
 		19B9418823509C8700661CED /* Decodable+fromDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decodable+fromDictionary.swift"; sourceTree = "<group>"; };
@@ -368,6 +365,7 @@
 		19F87DF12323B485008473C3 /* CoreDataStackProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStackProtocol.swift; sourceTree = "<group>"; };
 		19F87DF32323C0AA008473C3 /* newjrk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = newjrk.entitlements; sourceTree = "<group>"; };
 		19F87DF52323C0B3008473C3 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		F578A076238FA6110012DBCD /* jrkKitWatch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "jrkKitWatch-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -473,9 +471,6 @@
 				197C078623832DDF005E2084 /* jrkTVTests */,
 				194136592323A04E0087BCC6 /* Products */,
 				19F87DF42323C0B3008473C3 /* Frameworks */,
-				19B9415D23508A7400661CED /* jrkKit copy-Info.plist */,
-				197C07C923832E8C005E2084 /* jrkKitWatch copy-Info.plist */,
-				197C07F623832F67005E2084 /* jrkKit copy2-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -662,6 +657,7 @@
 				19B9418123509B6F00661CED /* WatchConnectivity */,
 				19B90E542350735F004B4B40 /* jrkKit.h */,
 				19B90E552350735F004B4B40 /* Info.plist */,
+				F578A076238FA6110012DBCD /* jrkKitWatch-Info.plist */,
 				194136642323A04E0087BCC6 /* newjrk.xcdatamodeld */,
 			);
 			path = jrkKit;
@@ -1995,7 +1991,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "jrkKit copy-Info.plist";
+				INFOPLIST_FILE = "jrkKit/jrkKitWatch-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2025,7 +2021,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "jrkKit copy-Info.plist";
+				INFOPLIST_FILE = "jrkKit/jrkKitWatch-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
