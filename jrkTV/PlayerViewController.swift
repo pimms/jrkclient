@@ -39,10 +39,39 @@ class PlayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+
+        streamPlayer.play()
     }
 
     private func setup() {
         add(avPlayerViewController)
+
+        let overlay = makeContentOverlayView()
+        overlay.translatesAutoresizingMaskIntoConstraints = false
+        avPlayerViewController.contentOverlayView?.addSubview(overlay)
+        overlay.fillInSuperview(padding: 128)
+    }
+
+    private func makeContentOverlayView() -> UIView {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 64
+
+        if let image = streamPlayer.streamPicture {
+            let imageView = UIImageView(image: image)
+            imageView.contentMode = .scaleAspectFit
+            stackView.addArrangedSubview(imageView)
+        }
+
+        if let logo = UIImage(named: "jrkLight") {
+            let imageView = UIImageView(image: logo)
+            imageView.contentMode = .scaleAspectFit
+            stackView.addArrangedSubview(imageView)
+        }
+
+        return stackView
     }
 }
 
