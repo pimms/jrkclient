@@ -28,7 +28,7 @@ public class StreamPlayer: NSObject {
     }
 
     public var streamName: String {
-        return apiClient.streamName ?? "Unnamed Stream"
+        return apiClient.streamName ?? "JRK"
     }
 
     public var episodeTitle: String {
@@ -167,14 +167,36 @@ public class StreamPlayer: NSObject {
 // MARK: - tvOS specific
 
 #if os(tvOS)
+
+import AVKit
+
 extension StreamPlayer {
     private func updateNowPlayingProperties() {
-        
+        var metadata = [AVMetadataItem]()
+
+        let titleItem = makeMetadataItem(.commonIdentifierTitle, value: streamName)
+        metadata.append(titleItem)
+
+        let descItem = makeMetadataItem(.commonIdentifierDescription, value: episodeTitle)
+        metadata.append(descItem)
+
+        if let image = streamPicture, let data = image.pngData() {
+            let artworkItem = makeMetadataItem(.commonIdentifierArtwork, value: data)
+            metadata.append(artworkItem)
+        }
+
+        playerItem.externalMetadata = metadata
+    }
+
+    private func makeMetadataItem(_ identifier: AVMetadataIdentifier, value: Any) -> AVMetadataItem {
+        let item = AVMutableMetadataItem()
+        item.identifier = identifier
+        item.value = value as? NSCopying & NSObjectProtocol
+        item.extendedLanguageTag = "und"
+        return item.copy() as! AVMetadataItem
     }
 }
 #else
-
-
 #if os(iOS)
 
 // MARK: - iOS specific
@@ -182,7 +204,7 @@ extension StreamPlayer {
 extension StreamPlayer {
     private func updateNowPlayingProperties() {
         var nowPlayingInfo: [String : Any] = [
-            MPMediaItemPropertyArtist: apiClient.streamName ?? "JRK",
+            MPMediaItemPropertyArtist: streamName,
             MPMediaItemPropertyTitle: episodeTitle,
             MPNowPlayingInfoPropertyIsLiveStream: true,
         ]
@@ -193,13 +215,11 @@ extension StreamPlayer {
             nowPlayingInfo[MPMediaItemPropertyArtwork] = artwork
         }
 
-        // NOTE!
-        // AVKit for tvOS clients should not set MPNowPlayingInfoCenter fields directly; use AVPlayerItem externalMetadata instead (see <AVKit/AVPlayerItem.h>)
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
     }
 }
-#else
 
+#else
 
 extension StreamPlayer {
     private func updateNowPlayingProperties() {
@@ -208,5 +228,4 @@ extension StreamPlayer {
 }
 
 #endif
-
 #endif
