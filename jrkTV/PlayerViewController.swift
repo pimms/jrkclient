@@ -15,6 +15,7 @@ class PlayerViewController: UIViewController {
     private lazy var avPlayerViewController: AVPlayerViewController = {
         let vc = AVPlayerViewController()
         vc.player = streamPlayer.player
+        vc.delegate = self
         return vc
     }()
 
@@ -43,4 +44,8 @@ class PlayerViewController: UIViewController {
     private func setup() {
         add(avPlayerViewController)
     }
+}
+
+extension PlayerViewController: AVPlayerViewControllerDelegate {
+
 }

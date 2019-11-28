@@ -162,7 +162,22 @@ public class StreamPlayer: NSObject {
             }
         }
     }
+}
 
+// MARK: - tvOS specific
+
+#if os(tvOS)
+extension StreamPlayer {
+    private func updateNowPlayingProperties() {
+        
+    }
+}
+#endif
+
+// MARK: - iOS specific
+
+#if os(iOS)
+extension StreamPlayer {
     private func updateNowPlayingProperties() {
         var nowPlayingInfo: [String : Any] = [
             MPMediaItemPropertyArtist: apiClient.streamName ?? "JRK",
@@ -176,6 +191,9 @@ public class StreamPlayer: NSObject {
             nowPlayingInfo[MPMediaItemPropertyArtwork] = artwork
         }
 
+        // NOTE!
+        // AVKit for tvOS clients should not set MPNowPlayingInfoCenter fields directly; use AVPlayerItem externalMetadata instead (see <AVKit/AVPlayerItem.h>)
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
     }
 }
+#endif
