@@ -172,11 +172,13 @@ extension StreamPlayer {
         
     }
 }
-#endif
+#else
+
+
+#if os(iOS)
 
 // MARK: - iOS specific
 
-#if os(iOS)
 extension StreamPlayer {
     private func updateNowPlayingProperties() {
         var nowPlayingInfo: [String : Any] = [
@@ -196,4 +198,15 @@ extension StreamPlayer {
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
     }
 }
+#else
+
+
+extension StreamPlayer {
+    private func updateNowPlayingProperties() {
+        // Nothing to do for non-IOS & non-tvOS platforms.
+    }
+}
+
+#endif
+
 #endif
