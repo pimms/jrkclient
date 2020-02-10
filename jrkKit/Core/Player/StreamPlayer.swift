@@ -1,6 +1,10 @@
 import AVFoundation
 import MediaPlayer
 
+#if os(tvOS)
+import AVKit
+#endif
+
 public protocol StreamPlayerDelegate: AnyObject {
     func streamPlayerChangedState(_ streamPlayer: StreamPlayer)
 }
@@ -164,14 +168,9 @@ public class StreamPlayer: NSObject {
     }
 }
 
-// MARK: - tvOS specific
-
+private extension StreamPlayer {
 #if os(tvOS)
-
-import AVKit
-
-extension StreamPlayer {
-    private func updateNowPlayingProperties() {
+    func updateNowPlayingProperties() {
         var metadata = [AVMetadataItem]()
 
         let titleItem = makeMetadataItem(.commonIdentifierTitle, value: streamName)
@@ -188,21 +187,15 @@ extension StreamPlayer {
         playerItem.externalMetadata = metadata
     }
 
-    private func makeMetadataItem(_ identifier: AVMetadataIdentifier, value: Any) -> AVMetadataItem {
+    func makeMetadataItem(_ identifier: AVMetadataIdentifier, value: Any) -> AVMetadataItem {
         let item = AVMutableMetadataItem()
         item.identifier = identifier
         item.value = value as? NSCopying & NSObjectProtocol
         item.extendedLanguageTag = "und"
         return item.copy() as! AVMetadataItem
     }
-}
 #else
-#if os(iOS)
-
-// MARK: - iOS specific
-
-extension StreamPlayer {
-    private func updateNowPlayingProperties() {
+    func updateNowPlayingProperties() {
         var nowPlayingInfo: [String : Any] = [
             MPMediaItemPropertyArtist: streamName,
             MPMediaItemPropertyTitle: episodeTitle,
@@ -217,15 +210,5 @@ extension StreamPlayer {
 
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
     }
-}
-
-#else
-
-extension StreamPlayer {
-    private func updateNowPlayingProperties() {
-        // Nothing to do for non-IOS & non-tvOS platforms.
-    }
-}
-
 #endif
-#endif
+}

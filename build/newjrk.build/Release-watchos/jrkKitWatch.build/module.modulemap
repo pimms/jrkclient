@@ -1,0 +1,4 @@
+framework module jrkKitWatch {
+  header "jrkKitWatch-Swift.h"
+  requires objc
+}

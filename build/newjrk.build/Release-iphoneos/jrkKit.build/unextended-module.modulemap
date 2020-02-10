@@ -1,0 +1,10 @@
+framework module jrkKit {
+  umbrella header "jrkKit.h"
+
+  export *
+  module * { export * }
+}
+
+module jrkKit.__Swift {
+    exclude header "jrkKit-Swift.h"
+}

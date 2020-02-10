@@ -74,7 +74,6 @@
 		19B90E6023507610004B4B40 /* WeakRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194C427A233D364C00ADB910 /* WeakRef.swift */; };
 		19B90E6123507610004B4B40 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192C340D233F45450069ACE5 /* Log.swift */; };
 		19B90E6223507610004B4B40 /* DelegateCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192C3411233F4E530069ACE5 /* DelegateCollection.swift */; };
-		19B90E6323507610004B4B40 /* StreamPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195F2EDD232FE6A500AF84A1 /* StreamPlayer.swift */; };
 		19B90E6423507610004B4B40 /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195F2EE0232FED0200AF84A1 /* PlayerState.swift */; };
 		19B90E6523507610004B4B40 /* ServerSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CBF10423252F330087D305 /* ServerSetup.swift */; };
 		19B90E6623507610004B4B40 /* URLValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E812EB23489697002C6A47 /* URLValidator.swift */; };
@@ -139,6 +138,7 @@
 		19B941922350A18E00661CED /* WCSession+send.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B941912350A18E00661CED /* WCSession+send.swift */; };
 		19B941932350A18E00661CED /* WCSession+send.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B941912350A18E00661CED /* WCSession+send.swift */; };
 		19B941972350AF7800661CED /* UIImage+scaledForWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B941962350AF7800661CED /* UIImage+scaledForWatch.swift */; };
+		19CB198523F1E6C300D4DD6A /* StreamPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195F2EDD232FE6A500AF84A1 /* StreamPlayer.swift */; };
 		19CBF0FF232436F70087D305 /* MockNetworkClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CBF0FE232436F70087D305 /* MockNetworkClientTests.swift */; };
 		19CBF10223243CC20087D305 /* TestAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19CBF10123243CC20087D305 /* TestAssets.xcassets */; };
 		19CBF1072325342E0087D305 /* ServerSetupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CBF1062325342E0087D305 /* ServerSetupTests.swift */; };
@@ -1296,13 +1296,13 @@
 				19B9417323508CAB00661CED /* ServerConfiguration+picturePath.swift in Sources */,
 				197C07FE23833574005E2084 /* UIViewController.swift in Sources */,
 				19B90E6123507610004B4B40 /* Log.swift in Sources */,
+				19CB198523F1E6C300D4DD6A /* StreamPlayer.swift in Sources */,
 				19B90E6023507610004B4B40 /* WeakRef.swift in Sources */,
 				19B9417623508CAB00661CED /* String+stableHash.swift in Sources */,
 				19B90E7423507610004B4B40 /* NetworkClient.swift in Sources */,
 				19B941922350A18E00661CED /* WCSession+send.swift in Sources */,
 				19B941972350AF7800661CED /* UIImage+scaledForWatch.swift in Sources */,
 				19B90E7323507610004B4B40 /* LogEntryDTO.swift in Sources */,
-				19B90E6323507610004B4B40 /* StreamPlayer.swift in Sources */,
 				19B90E6523507610004B4B40 /* ServerSetup.swift in Sources */,
 				19B90E762350764B004B4B40 /* newjrk.xcdatamodeld in Sources */,
 				19B90E7523507610004B4B40 /* NetworkClientProtocol.swift in Sources */,
@@ -1858,6 +1858,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = no.jstien.jrkKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1886,6 +1887,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = no.jstien.jrkKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

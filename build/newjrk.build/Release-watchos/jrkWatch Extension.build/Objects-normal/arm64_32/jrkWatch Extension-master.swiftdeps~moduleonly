@@ -1,0 +1,11 @@
+version: "Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)"
+options: "c9506e2cdb58b420bc180d40ae7fb39d"
+build_time: [1581363524, 884766000]
+inputs:
+  "/Users/pimms/code/roi/newClient/jrkWatch Extension/StreamPictureStore.swift": [9223372036, 854775807]
+  "/Users/pimms/code/roi/newClient/jrkWatch Extension/HostingController.swift": [9223372036, 854775807]
+  "/Users/pimms/code/roi/newClient/jrkWatch Extension/ContentView.swift": [9223372036, 854775807]
+  "/Users/pimms/code/roi/newClient/jrkWatch Extension/Extensions/WCSession+applicationContext.swift": [9223372036, 854775807]
+  "/Users/pimms/code/roi/newClient/jrkWatch Extension/MessageReceiver.swift": [9223372036, 854775807]
+  "/Users/pimms/code/roi/newClient/jrkWatch Extension/StreamPictureFetcher.swift": [9223372036, 854775807]
+  "/Users/pimms/code/roi/newClient/jrkWatch Extension/ExtensionDelegate.swift": [9223372036, 854775807]

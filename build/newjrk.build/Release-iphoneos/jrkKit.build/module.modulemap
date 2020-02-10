@@ -1,0 +1,11 @@
+framework module jrkKit {
+  umbrella header "jrkKit.h"
+
+  export *
+  module * { export * }
+}
+
+module jrkKit.Swift {
+    header "jrkKit-Swift.h"
+    requires objc
+}

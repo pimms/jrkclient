@@ -1,0 +1,13 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': "/Users/pimms/code/roi/newClient/build/Release-iphoneos/jrkKit.framework/Modules"
+    'contents': [{
+      'type': 'file',
+      'name': "module.modulemap",
+      'external-contents': "/Users/pimms/code/roi/newClient/build/newjrk.build/Release-iphoneos/jrkKit.build/unextended-module.modulemap",
+    }]
+  }]
+}

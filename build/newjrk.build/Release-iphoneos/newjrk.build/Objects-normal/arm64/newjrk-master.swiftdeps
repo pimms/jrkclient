@@ -1,0 +1,14 @@
+version: "Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)"
+options: "af06847119c7feb97f5bebcfd5b88014"
+build_time: [1581363530, 638494000]
+inputs:
+  "/Users/pimms/code/roi/newClient/newjrk/Views/Reusable/GradientBlurView.swift": [9223372036, 854775807]
+  "/Users/pimms/code/roi/newClient/newjrk/WatchConnectivity/WatchConnection.swift": [9223372036, 854775807]
+  "/Users/pimms/code/roi/newClient/newjrk/Views/Reusable/RoundedButton.swift": [9223372036, 854775807]
+  "/Users/pimms/code/roi/newClient/newjrk/ViewControllers/InitialConfigViewController.swift": [9223372036, 854775807]
+  "/Users/pimms/code/roi/newClient/newjrk/AppStartup/AppDelegate.swift": [9223372036, 854775807]
+  "/Users/pimms/code/roi/newClient/newjrk/Views/LoadingView/LoadingView.swift": [9223372036, 854775807]
+  "/Users/pimms/code/roi/newClient/newjrk/ViewControllers/LoadingViewController.swift": [9223372036, 854775807]
+  "/Users/pimms/code/roi/newClient/newjrk/AppStartup/SceneDelegate.swift": [9223372036, 854775807]
+  "/Users/pimms/code/roi/newClient/newjrk/ViewControllers/LogViewController.swift": [9223372036, 854775807]
+  "/Users/pimms/code/roi/newClient/newjrk/ViewControllers/PlayerViewController.swift": [9223372036, 854775807]
